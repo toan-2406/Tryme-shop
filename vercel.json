@@ -1,7 +1,6 @@
 {
     "routes": [
       {
-        "src": "/products",
         "headers": { "cache-control": "s-maxage=0" }
       }
     ]
