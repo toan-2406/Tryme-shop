@@ -11,7 +11,8 @@ module.exports = {
     extend: {
       colors: {
         orange: '#F47726',
-        gray:'#252525'
+        gray:'#252525',
+        pink:'#F6E6CD'
       },
     }
   },

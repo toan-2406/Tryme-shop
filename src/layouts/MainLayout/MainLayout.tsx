@@ -7,9 +7,9 @@ interface Props {
 
 export default function MainLayout({ children }: Props) {
   return (
-    <div >
+    <div>
       <Header />
-      {children}
+      <div className='pt-[72px] pb-6'>{children}</div>
       <Footer />
     </div>
   )

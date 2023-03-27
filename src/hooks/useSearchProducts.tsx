@@ -35,7 +35,7 @@ export default function useSearchProducts() {
           name: data.name
         }
     navigate({
-      pathname: path.home,
+      pathname: path.products,
       search: createSearchParams(config).toString()
     })
   })

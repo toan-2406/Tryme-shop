@@ -34,6 +34,7 @@
     "react-hook-form": "^7.42.1",
     "react-router-dom": "^6.8.0",
     "react-toastify": "^9.1.1",
+    "swiper": "^9.1.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {

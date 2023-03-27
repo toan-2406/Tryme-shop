@@ -129,7 +129,7 @@ export default function ProductDetail() {
 
   if (!product) return null
   return (
-    <div className='bg-gray-200 py-6'>
+    <div className='bg-gray-200 '>
       <Helmet>
         <title>{product.name} | Shopee Clone</title>
         <meta

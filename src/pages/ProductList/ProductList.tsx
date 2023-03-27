@@ -11,6 +11,8 @@ import AsideFilter from './components/AsideFilter'
 import Product from './components/Product/Product'
 import SortProductList from './components/SortProductList'
 import { Helmet } from 'react-helmet-async'
+import { useState } from 'react'
+import InfinityLoader from 'src/components/InfinityLoader'
 
 export type QueryConfig = {
   [key in keyof ProductListConfig]: string
@@ -27,8 +29,7 @@ export default function ProductList() {
     },
     keepPreviousData: true,
     staleTime: 3 * 60 * 1000
-  })
-  console.log(productsData)
+  }) 
 
   const { data: categoriesData } = useQuery({
     queryKey: ['categories'],
@@ -38,20 +39,20 @@ export default function ProductList() {
   })
 
   return (
-    <div className='bg-gray-200 py-6'>
+    <div className='bg-gray-200'>
       <Helmet>
         <title>Trang sản phẩm | Shopee Clone</title>
         <meta name='description' content='Trang sản phẩm shopee Clone' />
       </Helmet>
       <div className='container'>
-        {productsData && (
-          <div className='grid grid-cols-12 gap-6'>
-            <div className='col-span-3'>
-              <AsideFilter queryConfig={queryConfig} categories={categoriesData?.data.data || []} />
-            </div>
-            <div className='col-span-9'>
+        <div className='grid grid-cols-12 gap-6'>
+          <div className='col-span-2'>
+            <AsideFilter queryConfig={queryConfig} categories={categoriesData?.data.data || []} />
+          </div>
+          {productsData && (
+            <div className='col-span-10'>
               <SortProductList queryConfig={queryConfig} totalPage={productsData?.data.data.pagination.page_size} />
-              <div className='mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+              <div className='mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4'>
                 {productsData.data.data.products.map((product) => (
                   <div key={product._id} className='col-span-1'>
                     <Product product={product} />
@@ -60,8 +61,8 @@ export default function ProductList() {
               </div>
               <Pagination queryConfig={queryConfig} totalPage={productsData?.data.data.pagination.page_size} />
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   )

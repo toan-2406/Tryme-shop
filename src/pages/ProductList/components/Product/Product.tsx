@@ -11,15 +11,26 @@ interface Props {
 
 export default function Product({ product }: Props) {
   return (
-    <Link to={`${path.home}${generateNameId({ name: product.name, id: product._id })}`}>
-      <div className='durantion-100 rounded-sm bg-white shadow transition-transform hover:translate-y-[-0.0625rem] hover:shadow-md'>
-        <div className='relative w-full pt-[100%] '>
+    <Link to={`/products/${generateNameId({ name: product.name, id: product._id })}`}>
+      <div className='text-left durantion-100 shadow-md p-4 rounded-[10px] transition-transform hover:translate-y-[-0.0925rem] hover:shadow-lg'>
+        <div className=" rounded-[10px] overflow-hidden ">
           <img
             src={product.image}
             alt={product.name}
-            className='absolute top-0 left-0 h-full w-full bg-white object-cover'
+            className='bg-cover h-full '
           />
         </div>
+        <div className="mt-4">
+          <h3 className="font-semibold text-lg line-clamp-2 ">{product.name}</h3>
+          <p className="font-normal text-sm ">Variant</p>
+        </div>
+        <div className='max-w-[50%] truncate text-gray-500 space-x-1 mt-2'>
+          <span className='font-bold text-xl mt-2'>{formatCurrency(product.price_before_discount)}</span>
+          <span className='font-bold text-xl mt-2'>đ</span>
+        </div>
+      </div>
+      {/* <div className='durantion-100 rounded-sm bg-white shadow transition-transform hover:translate-y-[-0.0625rem] hover:shadow-md'>
+        
         <div className='overflow-hidden p-2'>
           <div className='min-h-[1.75rem] text-xs line-clamp-2'>{product.name}</div>
           <div className='mt-3 flex items-center'>
@@ -40,7 +51,7 @@ export default function Product({ product }: Props) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </Link>
   )
 }

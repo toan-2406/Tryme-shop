@@ -117,6 +117,16 @@ export default function useRouteElements() {
       ]
     },
     {
+      path: path.products,
+      element: (
+        <MainLayout>
+          <Suspense>
+            <ProductList />
+          </Suspense>
+        </MainLayout>
+      )
+    },
+    {
       path: path.productDetail,
       element: (
         <MainLayout>
@@ -126,6 +136,7 @@ export default function useRouteElements() {
         </MainLayout>
       )
     },
+    
     {
       path: '',
       index: true,

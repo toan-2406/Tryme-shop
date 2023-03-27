@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { createSearchParams, Link, useNavigate } from 'react-router-dom'
 import purchaseApi from 'src/apis/purchase.api'
 import noProduct from 'src/assets/images/no-product.png'
+import { navLink } from 'src/constants/fakedata'
 import path from 'src/constants/path'
 import { purchasesStatus } from 'src/constants/purchase'
 import { AppContext } from 'src/contexts/app.context'
@@ -31,26 +32,9 @@ export default function Header() {
   })
 
   const purchasesInCart = purchasesInCartData?.data.data
-  const navLink = [
-    {
-      path: '/',
-      displayName: 'Home'
-    },
-    {
-      path: '/products',
-      displayName: 'Product'
-    },
-    {
-      path: '/about',
-      displayName: 'About'
-    },
-    {
-      path: '/contact',
-      displayName: 'Contact'
-    }
-  ]
+
   return (
-    <div className='pb-5 pt-2 text-white fixed top-0 w-full h-[72px] border-b-[1px] border-black'>
+    <div className='pb-5 pt-2 text-white bg-[#F6E6CD] fixed top-0 w-full h-20 z-40 shadow-lg'>
       <div className='container'>
         {/* <NavHeader /> */}
         <div className='flex items-center justify-between'>
@@ -66,7 +50,7 @@ export default function Header() {
             </svg>
 
           </Link>
-          <nav>
+          <nav className='hidden'>
             <ul>
               {
                 navLink.map((navLink, index) => {
@@ -81,54 +65,15 @@ export default function Header() {
           </nav>
           <div className='flex gap-[10px]'>
             <div><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18.3333 31.6667C25.6971 31.6667 31.6667 25.6971 31.6667 18.3333C31.6667 10.9695 25.6971 5 18.3333 5C10.9695 5 5 10.9695 5 18.3333C5 25.6971 10.9695 31.6667 18.3333 31.6667Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M35 35L27.75 27.75" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M18.3333 31.6667C25.6971 31.6667 31.6667 25.6971 31.6667 18.3333C31.6667 10.9695 25.6971 5 18.3333 5C10.9695 5 5 10.9695 5 18.3333C5 25.6971 10.9695 31.6667 18.3333 31.6667Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M35 35L27.75 27.75" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             </div>
-            <div><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 3.33325L5 9.99992V33.3333C5 34.2173 5.35119 35.0652 5.97631 35.6903C6.60143 36.3154 7.44928 36.6666 8.33333 36.6666H31.6667C32.5507 36.6666 33.3986 36.3154 34.0237 35.6903C34.6488 35.0652 35 34.2173 35 33.3333V9.99992L30 3.33325H10Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M5 10H35" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M26.6667 16.6667C26.6667 18.4349 25.9643 20.1306 24.7141 21.3808C23.4638 22.631 21.7681 23.3334 20 23.3334C18.2319 23.3334 16.5362 22.631 15.286 21.3808C14.0357 20.1306 13.3333 18.4349 13.3333 16.6667" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-
-            </div>
-            <div><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M33.3334 35V31.6667C33.3334 29.8986 32.631 28.2029 31.3807 26.9526C30.1305 25.7024 28.4348 25 26.6667 25H13.3334C11.5652 25 9.86955 25.7024 8.61931 26.9526C7.36907 28.2029 6.66669 29.8986 6.66669 31.6667V35" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path d="M20 18.3333C23.6819 18.3333 26.6666 15.3486 26.6666 11.6667C26.6666 7.98477 23.6819 5 20 5C16.3181 5 13.3333 7.98477 13.3333 11.6667C13.3333 15.3486 16.3181 18.3333 20 18.3333Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            </div>
-          </div>
-          {/* <form className='col-span-9' onSubmit={onSubmitSearch}>
-            <div className='flex rounded-sm bg-white p-1'>
-              <input
-                type='text'
-                className='flex-grow border-none bg-transparent py-2 text-black outline-none'
-                {...register('name')}
-              />
-              <button className='flex-shrink-0 rounded-sm bg-orange py-2 px-6 hover:opacity-90'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-6 w-6'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-                  />
-                </svg>
-              </button>
-            </div>
-          </form> */}
-          {/* <div className='col-span-1 justify-self-end'>
-            <Popover
+            <div> <Popover
               renderPopover={
-                <div className='relative  max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
+                <div className='relative  max-w-[400px] rounded-sm bg-white text-sm shadow-lg  z-50'>
                   {purchasesInCart && purchasesInCart.length > 0 ? (
-                    <div className='p-2'>
+                    <div className='p-2 z-50'>
                       <div className='capitalize text-gray-400'>Sản phẩm mới thêm</div>
                       <div className='mt-5'>
                         {purchasesInCart.slice(0, MAX_INCART).map((purchase) => (
@@ -172,20 +117,11 @@ export default function Header() {
               }
             >
               <Link to='/' className='relative'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-8 w-8'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z'
-                  />
-                </svg>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3.33325L5 9.99992V33.3333C5 34.2173 5.35119 35.0652 5.97631 35.6903C6.60143 36.3154 7.44928 36.6666 8.33333 36.6666H31.6667C32.5507 36.6666 33.3986 36.3154 34.0237 35.6903C34.6488 35.0652 35 34.2173 35 33.3333V9.99992L30 3.33325H10Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M5 10H35" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M26.6667 16.6667C26.6667 18.4349 25.9643 20.1306 24.7141 21.3808C23.4638 22.631 21.7681 23.3334 20 23.3334C18.2319 23.3334 16.5362 22.631 15.286 21.3808C14.0357 20.1306 13.3333 18.4349 13.3333 16.6667" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
                 {purchasesInCart && purchasesInCart.length > 0 && (
                   <span className='absolute top-[-5px] left-[17px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange '>
                     {purchasesInCart?.length}
@@ -193,7 +129,40 @@ export default function Header() {
                 )}
               </Link>
             </Popover>
-          </div> */}
+
+            </div>
+            <div><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M33.3334 35V31.6667C33.3334 29.8986 32.631 28.2029 31.3807 26.9526C30.1305 25.7024 28.4348 25 26.6667 25H13.3334C11.5652 25 9.86955 25.7024 8.61931 26.9526C7.36907 28.2029 6.66669 29.8986 6.66669 31.6667V35" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M20 18.3333C23.6819 18.3333 26.6666 15.3486 26.6666 11.6667C26.6666 7.98477 23.6819 5 20 5C16.3181 5 13.3333 7.98477 13.3333 11.6667C13.3333 15.3486 16.3181 18.3333 20 18.3333Z" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            </div>
+          </div>
+          {/* <form className='col-span-9' onSubmit={onSubmitSearch}>
+            <div className='flex rounded-sm bg-white p-1'>
+              <input
+                type='text'
+                className='flex-grow border-none bg-transparent py-2 text-black outline-none'
+                {...register('name')}
+              />
+              <button className='flex-shrink-0 rounded-sm bg-orange py-2 px-6 hover:opacity-90'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth={1.5}
+                  stroke='currentColor'
+                  className='h-6 w-6'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
+                  />
+                </svg>
+              </button>
+            </div>
+          </form> */}
+          
         </div>
       </div>
     </div>
