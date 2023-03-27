@@ -77,8 +77,8 @@ export default function Header() {
           </Link>
 </div>
           
-          <nav className={`fixed top-0 left-0 w-3/4 z-40 transition-all ease-linear  ${isOpen ? 'translate-x-0' : 'translate-x-[-100%]'}`}>
-            <ul className='bg-white h-screen  flex flex-col items-center justify-center gap-6'>
+          <nav className={`fixed top-0 left-0 w-3/4 z-40 lg:relative lg:translate-x-0 transition-all ease-linear  ${isOpen ? 'translate-x-0' : 'translate-x-[-100%]'}`}>
+            <ul className='bg-white h-screen lg:bg-none lg:h-auto flex flex-col lg:flex-row items-center justify-center gap-6'>
               {navLink.map((navLink, index) => {
                 return (
                   <li key={index} className='ml-3 inline-block'>
