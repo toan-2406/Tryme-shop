@@ -72,7 +72,7 @@ const { sort_by = sortBy.view } = queryConfig
 
 const handleSort = (sortValue) => {
   navigate({
-    pathname : /products,
+    pathname : path.products,
     search : createSearchParams({
       ...queryConfig,
       sort_by : sortValue

@@ -22,9 +22,9 @@ export default function Footer() {
               {
                 navLink.map((navLink, index) => {
                   return <li key={index} className="inline-block ml-3">
-                    <a href={navLink.path} className='text-gray font-bold'>
+                    <Link to={navLink.path} className='text-gray font-bold'>
                       {navLink.displayName}
-                    </a>
+                    </Link>
                   </li>
                 })
               }
@@ -39,9 +39,9 @@ export default function Footer() {
               {
                 policyLink.map((policy, index) => {
                   return <li key={index} className="inline-block ml-2">
-                    <a href={policy.path} className='text-black text-center text-sm font-medium'>
+                    <Link to={policy.path} className='text-black text-center text-sm font-medium'>
                       {policy.displayName}
-                    </a>
+                    </Link>
                   </li>
                 })
               }

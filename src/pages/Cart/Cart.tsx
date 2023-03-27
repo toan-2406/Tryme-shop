@@ -360,10 +360,10 @@ export default function Cart() {
         ) : (
           <div className='text-center'>
             <img src={noProduct} alt='no purchase' className='mx-auto h-24 w-24' />
-            <div className='text-gray-400 mt-5 font-bold'>Giỏ hàng của bạn còn trống</div>
+            <div className='text-gray-400 mt-5 font-bold'>Your cart empty</div>
             <div className='mt-5 text-center'>
               <Link
-                to={path.home}
+                to={path.products}
                 className=' rounded-md bg-orange px-10 py-2  uppercase text-white transition-all hover:bg-orange/80'
               >
                 Buy now
