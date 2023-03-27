@@ -2,7 +2,7 @@
     "routes": [
       {
         "src": "/products",
-        "headers": { "cache-control": "s-maxage=1000" }
+        "headers": { "cache-control": "s-maxage=0" }
       }
     ]
   }
