@@ -25,12 +25,12 @@
 
 price_min: yup.string().test({
 name: 'price-not-allowed',
-message: 'Giá không phù hợp',
+message: 'Price not allowed',
 test: testPriceMinMax
 }),
 price_max: yup.string().test({
 name: 'price-not-allowed',
-message: 'Giá không phù hợp',
+message: 'Price not allowed',
 test: testPriceMinMax
 })
 
@@ -124,7 +124,7 @@ Vậy điều kiện nào để render ra sao vàng ?
 
 # Xử lý handleRemoveAll
 
-=> Khi user bấm vào Xóa tất cả, ta sẽ xóa các filter ( ngoại trừ filter sort và page ) trên thanh url
+=> Khi user bấm vào Remove all, ta sẽ xóa các filter ( ngoại trừ filter sort và page ) trên thanh url
 
 > > Vậy ta vấn sẽ dùng combo navigate và createSearchParams, nhưng lần này không cần clone lại queryConfig, mà sửa ngay chính queryConfig gốc kết hợp với hàm omit của lodash để loại bỏ những hàm mình muốn remove như price_min price_max rating_filter ...
 

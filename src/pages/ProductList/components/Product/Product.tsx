@@ -13,7 +13,7 @@ interface Props {
 export default function Product({ product }: Props) {
   return (
     <Link to={`/products/${generateNameId({ name: product.name, id: product._id })}`}>
-      <div className='text-left durantion-100 shadow-md z-0 p-4 rounded-[10px] transition-transform hover:translate-y-[-0.0925rem] hover:shadow-lg'>
+      <div className='text-left durantion-100 shadow-md z-0 p-2 md:p-4 rounded-[10px] transition-transform hover:translate-y-[-0.0925rem] hover:shadow-lg'>
         <div className=" rounded-[10px] overflow-hidden max-h-[284px]">
           <img
             src={product.image}

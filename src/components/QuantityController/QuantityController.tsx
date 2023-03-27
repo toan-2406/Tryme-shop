@@ -61,7 +61,7 @@ export default function QuantityController({
     <div className={' flex items-center' + classNameWrapper}>
       <button
         onClick={decrease}
-        className='flex h-8 w-8 items-center justify-center mr-2 rounded-full border-2 text-black'
+        className='flex h-8 w-8 items-center justify-center mr-2 rounded-full border text-black'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -77,7 +77,7 @@ export default function QuantityController({
       <InputNumber
         className=''
         classNameError='hidden'
-        classNameInput='h-8 w-14 border-2 p-1 rounded text-center font-bold text-base outline-none'
+        classNameInput='h-8 w-14 border p-1 rounded text-center font-bold text-base outline-none'
         value={value || localValue}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -85,7 +85,7 @@ export default function QuantityController({
       />
       <button
         onClick={increase}
-        className='flex h-8 w-8 items-center justify-center rounded-full border-2 text-black  ml-2'
+        className='flex h-8 w-8 items-center justify-center rounded-full border text-black  ml-2'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'

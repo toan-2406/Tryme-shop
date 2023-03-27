@@ -88,12 +88,12 @@ export const schema = yup.object({
     .oneOf([yup.ref('password')], ' Nhập lại password không đúng'),
   price_min: yup.string().test({
     name: 'price-not-allowed',
-    message: 'Giá không phù hợp',
+    message: 'Price not allowed',
     test: testPriceMinMax
   }),
   price_max: yup.string().test({
     name: 'price-not-allowed',
-    message: 'Giá không phù hợp',
+    message: 'Price not allowed',
     test: testPriceMinMax
   }),
   name: yup.string().trim().required('Tên sản phẩm là bắt buộc')

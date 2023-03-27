@@ -328,9 +328,9 @@ const handleDelete = (purchaseIndex: number) => () => {
 
 Viết hàm `handleDeletePurchases` truyền 1 mảng [purchaseIds] vào thay vì chỉ có `1 id`, nhưng muốn tìm được `purchaseIds` thì phải `map` lại `checkedPurchases` để lấy `tất cả` phần tử, rồi truyền hết vào `mutate`
 
-## Chức năng mua ngay
+## Chức năng Buy now
 
-> Tình huống, ví dụ user đang ở trang productDetail thì user click vào mua ngay phải redirect qua trang `Cart` , nhưng khi redirect qua trang cart thì phải chuyển id của sản phẩm đó qua trang cart đồng thời auto checked cái sản phẩm mà mình chọn mua ngay
+> Tình huống, ví dụ user đang ở trang productDetail thì user click vào Buy now phải redirect qua trang `Cart` , nhưng khi redirect qua trang cart thì phải chuyển id của sản phẩm đó qua trang cart đồng thời auto checked cái sản phẩm mà mình chọn Buy now
 
     Option 1 : Chọn state global là context API
 

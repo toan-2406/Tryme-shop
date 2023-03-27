@@ -38,16 +38,16 @@ export default function DateSelect({ onChange, value, errorMessage }: Props) {
 
   return (
     <div className='mt-2 flex flex-col flex-wrap sm:flex-row'>
-      <div className='truncate pt-3 capitalize sm:w-[20%] sm:text-right'>Ngày sinh</div>
+      <div className='truncate pt-3 mb-1 capitalize sm:w-[20%] sm:text-right text-sm font-medium '>Date of birth</div>
       <div className='sm:w-[80%] sm:pl-5'>
-        <div className='flex justify-between'>
+        <div className='flex gap-2 justify-between'>
           <select
             onChange={handleChange}
             name='date'
-            className='h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 hover:border-orange'
+            className='h-10 w-1/3 cursor-pointer rounded-md border  px-3 hover:border-orange'
             value={value?.getDate() || date.date}
           >
-            <option disabled>Ngày</option>
+            <option disabled className='font-russo text-[12px]'>Date</option>
             {range(1, 32).map((item) => (
               <option value={item} key={item}>
                 {item}
@@ -57,10 +57,10 @@ export default function DateSelect({ onChange, value, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='month'
-            className='h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 hover:border-orange'
+            className='h-10 w-1/3 cursor-pointer rounded-md border  px-3 hover:border-orange'
             value={value?.getMonth() || date.month}
           >
-            <option disabled>Tháng</option>
+            <option disabled className="font-russo text-[12px]">Month</option>
             {range(0, 12).map((item) => (
               <option value={item} key={item}>
                 {item + 1}
@@ -70,10 +70,10 @@ export default function DateSelect({ onChange, value, errorMessage }: Props) {
           <select
             onChange={handleChange}
             name='year'
-            className='h-10 w-[32%] cursor-pointer rounded-sm border border-black/10 px-3 hover:border-orange'
+            className='h-10 w-1/3 cursor-pointer rounded-md border  px-3 hover:border-orange'
             value={value?.getFullYear() || date.year}
           >
-            <option disabled>Năm</option>
+            <option disabled className='font-russo text-[12px]'>Year</option>
             {range(1990, 2024).map((item) => (
               <option value={item} key={item}>
                 {item}

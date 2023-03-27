@@ -92,7 +92,7 @@ export default function RatingStars({ queryConfig }: Props) {
                     </svg>
                   )
                 })}
-              {indexRow !== 0 && <span>Trở lên</span>}
+              
             </div>
           </li>
         ))}

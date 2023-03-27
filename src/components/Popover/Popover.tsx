@@ -51,6 +51,7 @@ export default function Popover({
                 width: 'max-content',
                 transformOrigin: `${middlewareData.arrow?.x}px top`
               }}
+              className="z-50"
               initial={{ opacity: 0, transform: 'scale(0)' }}
               animate={{ opacity: 1, transform: 'scale(1)' }}
               exit={{ opacity: 0, transform: 'scale(0)' }}
@@ -58,7 +59,7 @@ export default function Popover({
             >
               <span
                 ref={arrowRef}
-                className='absolute z-10 translate-y-[-95%] border-[11px] border-x-transparent border-t-transparent border-b-white'
+                className='absolute z-50 translate-y-[-95%] border-[11px] border-x-transparent border-t-transparent border-b-white'
                 style={{
                   left: middlewareData.arrow?.x,
                   top: middlewareData.arrow?.y

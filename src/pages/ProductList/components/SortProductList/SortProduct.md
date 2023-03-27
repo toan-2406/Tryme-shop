@@ -55,11 +55,11 @@ const { data } = useQuery({
 // queryConfig đặt trong queryKey thì khi queryConfig thay đổi, queryFn sẽ tự gọi api
 ```
 
-### Demo chức năng click vào Phổ biến thì API cập nhật.
+### Demo chức năng click vào Popular thì API cập nhật.
 
-# Phân tích chức năng <button> Phổ biến </button>
+# Phân tích chức năng <button> Popular </button>
 
-1. Đầu tiên, khi user bấm vào Phổ biến, ta phải làm chức năng active, để biết đang ở filter nào
+1. Đầu tiên, khi user bấm vào Popular, ta phải làm chức năng active, để biết đang ở filter nào
 
 2. Ta phải truyền hàm handleSort vào onClick để thay đổi URL
 
@@ -80,7 +80,7 @@ const handleSort = (sortValue) => {
   })
 }
 
-<button onClick={() => handleSort('view')}>Phổ biến</button>
+<button onClick={() => handleSort('view')}>Popular</button>
 
 ```
 
@@ -102,6 +102,6 @@ const isActiveSortBy = (soryByValue) => {
   }
   onClick={() => handleSort('view')}
 >
-  Phổ biến
+  Popular
 </button>
 ```

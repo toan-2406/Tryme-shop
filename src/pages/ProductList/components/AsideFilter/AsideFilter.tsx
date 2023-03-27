@@ -85,7 +85,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             </g>
           </g>
         </svg>
-        Tất cả danh mục
+        All Categories
       </Link>
       <div className='my-4 h-[1px] bg-gray-300'></div>
       <ul>
@@ -134,11 +134,11 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             />
           </g>
         </svg>
-        Bộ lọc tìm kiếm
+       Search filter
       </Link>
-      <div className='my-4 h-[1px] bg-gray-300'></div>
+      <div className='my-4 h-[1px]'></div>
       <div className='my-5'>
-        <div>Khoản giá</div>
+        <div className='text-sm'>About</div>
         <form onSubmit={onSubmit} className='mt-2'>
           <div className='flex items-start'>
             {/* <Controller
@@ -167,9 +167,9 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
               name='price_min'
               type='number'
               className='grow'
-              placeholder='đ TỪ'
+              placeholder='đ from'
               classNameError='hidden'
-              classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
+              classNameInput='px-2 py-2 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-md focus:shadow-sm'
               onChange={() => {
                 trigger('price_max')
               }}
@@ -184,9 +184,9 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
                   <InputNumber
                     type='text'
                     className='grow'
-                    placeholder='đ ĐẾN'
+                    placeholder='đ to'
                     classNameError='hidden'
-                    classNameInput='p-1 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
+                    classNameInput='px-2 py-2 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-md focus:shadow-sm'
                     {...field}
                     onChange={(e) => {
                       field.onChange(e)
@@ -198,21 +198,21 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             />
           </div>
           <div className='mt-1 min-h-[1.25rem] text-center text-sm text-red-600 '>{errors.price_min?.message}</div>
-          <Button className='flex w-full items-center justify-center bg-orange py-2 px-2 text-sm uppercase text-white hover:bg-orange/80'>
-            Áp dụng
+          <Button className='w-full border'>
+            Apply
           </Button>
         </form>
       </div>
       <div className='my-4 h-[1px] bg-gray-300'></div>
-      <div className='text-sm'>Đánh giá</div>
+      <div className='text-sm'>Rating</div>
       <RatingStars queryConfig={queryConfig} />
       <div className='my-4 h-[1px] bg-gray-300'></div>
       <div className='bg-gray-30 my-4 h-[1px]'></div>
       <Button
         onClick={handleRemoveAll}
-        className='flex w-full items-center justify-center bg-orange py-2 px-2 text-sm uppercase text-white hover:bg-orange/80'
+        className='w-full border'
       >
-        Xóa tất cả
+        Remove all
       </Button>
     </div>
   )

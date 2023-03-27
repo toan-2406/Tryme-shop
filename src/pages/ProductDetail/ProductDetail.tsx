@@ -206,13 +206,15 @@ export default function ProductDetail() {
               </div>
             </div>
             <div className='md:col-span-7'>
-              <h1 className='text-3xl md:text-4xl font-bold capitalize'>{product.name}</h1>
-              <div className='relative mt-2'>
-                {/* <div className='text-gray-500 text-2xl font-medium line-through'>đ{formatCurrency(product.price_before_discount)}</div> */}
-                <div className=' text-2xl font-bold text-black'>đ{formatCurrency(product.price)}</div>
-                {/* <div className='absolute rounded-sm bg-orange px-1 py-[2px] text-xs font-semibold uppercase text-white'>
-                  {rateStale(product.price_before_discount, product.price)} giảm
-                </div> */}
+              <h1 className='text-2xl md:text-4xl font-bold capitalize'>{product.name}</h1>
+              <div className=' mt-2 flex gap-3'>
+                <div className='text-gray-500 text-2xl font-medium line-through'>đ{formatCurrency(product.price_before_discount)}</div>
+                <div className='relative text-2xl font-bold inline text-black'>đ{formatCurrency(product.price)}
+                
+                <div className='absolute left-full w-3/4  top-[-20%] rounded-sm bg-orange px-1  py-1 text-xs font-semibold uppercase text-white'>
+                  {rateStale(product.price_before_discount, product.price)} sale
+                </div></div>
+                
               </div>
               <div className='mt-4 flex items-center'>
                 <div className='flex items-center'>
@@ -222,7 +224,7 @@ export default function ProductDetail() {
                     nonActiveClassName='fill-gray-300 text-gray-300 h-4 w-4'
                   />
                   <span className='ml-2 text-sm font-medium'>
-                    ({product.rating}) stars • {formatNumberToSocialStyle(product.sold)} đã bán
+                    ({product.rating}) stars • {formatNumberToSocialStyle(product.sold)} sold
                   </span>
                 </div>
               </div>
@@ -237,22 +239,22 @@ export default function ProductDetail() {
                     value={buyCount}
                     max={product.quantity}
                   />
-                  <div className='ml-2 text-sm font-medium'>{product.quantity} sản phẩm có sẵn </div>
+                  <div className='ml-2 text-sm font-medium'>{product.quantity} available </div>
                 </div>
               </div>
 
         
              <button
                 onClick={addToCart}
-                className='my-4 h-16 w-full rounded-[100px] bg-pink text-base font-bold capitalize shadow-lg'
+                className='my-4 h-16 w-full rounded-[100px] border border-gray-500 bg-pink text-base font-bold capitalize shadow-lg hover:bg-orange hover:text-white transition-all ease-linear'
               >
-                Thêm vào giỏ hàng
+                Add to cart
               </button>
           <button
                 onClick={buyNow}
-                className='h-16 w-full rounded-[100px] bg-black text-base font-bold capitalize text-white shadow-lg'
+                className='h-16 w-full rounded-[100px] bg-black text-base font-bold capitalize text-white shadow-lg hover:bg-green-700  transition-all ease-linear'
               >
-                Mua ngay
+                Buy now
               </button>
               <p className='text-center text-[12px] mt-3 font-normal'>Free shipping over $50</p>
 

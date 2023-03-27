@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import { navLink, policyLink } from 'src/constants/fakedata'
 export default function Footer() {
   return (
-    <footer className='py-5 lg:py-20 container'>
-      <div className='flex flex-col justify-center items-center'>
+    <footer className=' bg-neutral-100 '>
+      <div className='flex flex-col justify-center items-center pt-5 lg:pt-20 container'>
       <Link to='/'>
             <svg width="180" height="62" viewBox="0 0 180 62" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
               <rect y="0.83252" width="180" height="60.3352" fill="url(#pattern0)" />
@@ -31,8 +31,8 @@ export default function Footer() {
             </ul>
           </nav>
       </div>
-      <hr className='mt-8 mb-4 md:mt-16 md:mb-8'/>
-      <div className='flex flex-col gap-2 md:flex-row items-center justify-between'>
+      <hr className='mt-8 mb-4 md:mt-16 md:mb-8 container'/>
+      <div className='flex flex-col gap-2 md:flex-row items-center justify-between container pb-5 lg:pb-20'>
         <div className='text-sm  font-normal text-black'>2022 Relume. All right reserved.</div>
         <nav>
             <ul>

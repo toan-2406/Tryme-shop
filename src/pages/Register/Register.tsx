@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { getRules, schema, Schema } from 'src/utils/rules'
+import image from 'src/assets/images/screenauth.png'
 
 import Input from 'src/components/Input'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -69,11 +70,14 @@ const Register = () => {
         <title>Đăng ký | Shopee Clone</title>
         <meta name='description' content='Đăng ký tài khoản Shopee Clone' />
       </Helmet>
-      <div className='mx-auto max-w-7xl px-4'>
-        <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-32 lg:pr-10'>
-          <div className='lg:col-span-2 lg:col-start-4'>
-            <form onSubmit={onSubmit} className='rounded bg-white p-10 shadow-sm'>
-              <div className='text-2xl'>Đăng ký</div>
+       <div className='container '>
+       <div className='grid grid-cols-1 py-4 lg:grid-cols-12 gap-4 '>
+          <div className='col-span-12 md:col-span-7 hidden md:block'>
+            <img src={image} alt="imgae" className='bg-contain'/>
+          </div>
+          <div className='lg:col-span-5 grid content-center'>
+            <form onSubmit={onSubmit} className='rounded-md bg-white px-5 py-10 md:px-10 shadow-sm'>
+              <div className='font-semibold text-2xl'>Đăng ký</div>
               <Input
                 name='email'
                 register={register}
@@ -103,7 +107,7 @@ const Register = () => {
               ></Input>
               <Button
                 type='submit'
-                className='flex w-full items-center justify-center bg-red-500 py-4 px-2 text-center text-sm uppercase text-white hover:bg-red-600'
+                className='flex w-full items-center justify-center  py-3 px-2 text-center text-sm uppercase text-white transition-all ease-linear hover:bg-orange'
                 isLoading={registerAccountMutation.isLoading}
                 disabled={registerAccountMutation.isLoading}
               >
@@ -111,7 +115,7 @@ const Register = () => {
               </Button>
               <div className='mt-8 flex items-center justify-center'>
                 <span className='text-gray-400'>Bạn đã có tài khoản ?</span>
-                <Link className='ml-1 text-red-400' to='/login'>
+                <Link className='ml-1 text-red-400 font-bold' to='/login'>
                   Đăng nhập
                 </Link>
               </div>

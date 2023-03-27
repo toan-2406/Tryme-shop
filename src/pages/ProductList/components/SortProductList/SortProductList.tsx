@@ -58,7 +58,7 @@ export default function SortProductList({ queryConfig, totalPage }: Props) {
             })}
             onClick={() => handleSort(sortBy.view)}
           >
-            Phổ biến
+            Popular
           </button>
           <button
             className={classNames(
@@ -68,7 +68,7 @@ export default function SortProductList({ queryConfig, totalPage }: Props) {
             )}
             onClick={() => handleSort(sortBy.createdAt)}
           >
-            Mới nhất
+           Newest Arrials
           </button>
           <button
             className={classNames(
@@ -78,7 +78,7 @@ export default function SortProductList({ queryConfig, totalPage }: Props) {
             )}
             onClick={() => handleSort(sortBy.sold)}
           >
-            Bán chạy
+            Featured
           </button>
           <div className='relative inline-block w-full'>
             <select

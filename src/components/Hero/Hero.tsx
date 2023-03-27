@@ -7,7 +7,7 @@ export default function Hero() {
             <h1 className="font-russo text-4xl lg:text-6xl">Find Your Style with TRYME</h1>
             <p className="text-base font-normal">Shop the latest fashion trends at TRYME. From stylish tops to trendy bottoms, find the perfect outfit for any occasion. Stay ahead of the game with our curated collections. Start shopping now!</p>
 
-            <a href="#" className="block" >
+            <a href="/products" className="block" >
               <button className="bg-gradient-to-l from-[#F47726] to-[#FFB483] w-[185px] py-4 text-center rounded-[100px] text-base font-bold text-white hover:shadow-lg hover:shadow-[#00000048] transition-shadow duration-150 ease-linear">
               Shop Now
               </button>

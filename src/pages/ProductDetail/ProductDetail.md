@@ -246,7 +246,7 @@ enabled: Boolean(product),
 
 -> Dùng staleTime ở cả 2 component
 
-## Click "Thêm vào giỏ hàng" thì sẽ add items vào trong Popover giỏ hàng, cùng với đó là hiện tổng số lượng items add vào ở badge
+## Click "Add to cart" thì sẽ add items vào trong Popover giỏ hàng, cùng với đó là hiện tổng số lượng items add vào ở badge
 
 > Chuẩn bị : khai báo type và api cho chức năng purchase này
 
@@ -264,7 +264,7 @@ const purchaseApi = {
 }
 ```
 
-> 1 . Khi bấm vào thêm vào giỏ hàng -> gọi đến add-to-cart -> truyền vào `product._id` và localState `buy_count`
+> 1 . Khi bấm vào Add to cart -> gọi đến add-to-cart -> truyền vào `product._id` và localState `buy_count`
 
 ```js
   const addToCart = () => {

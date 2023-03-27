@@ -8,7 +8,7 @@ export default function Button(props: ButtonProps) {
   const { className, isLoading, disabled, children, ...rest } = props
   const newClassName = disabled ? className + 'cursor-not-allowed' : className
   return (
-    <button className={`bg-transparent rounded-[100px] border-2 border-black py-[10.5px] px-10 hover:bg-pink ${newClassName}`} disabled={disabled} {...rest}>
+    <button className={`bg-transparent rounded-[100px] border border-black py-[10.5px] px-10 hover:bg-orange transition-all ease-linear ${newClassName}`} disabled={disabled} {...rest}>
       {isLoading && (
         <svg
           aria-hidden='true'
@@ -28,7 +28,7 @@ export default function Button(props: ButtonProps) {
         </svg>
       )}
 
-      <span className='text-black font-bold text-base capitalize'>{children}</span>
+      <span className='text-black font-semibold text-base capitalize'>{children}</span>
     </button>
   )
 }

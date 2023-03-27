@@ -163,8 +163,8 @@ export default function Cart() {
           <>
             <div className='overflow-auto'>
               <div className='min-w-[1000px]'>
-                <div className='grid grid-cols-12 rounded-sm bg-white py-5 px-9 text-sm capitalize text-gray-500 shadow'>
-                  <div className='col-span-6'>
+                <div className='text-gray-500 grid grid-cols-12 rounded-md bg-white py-5 px-9 text-md capitalize shadow'>
+                  <div className='col-span-5'>
                     <div className='flex items-center'>
                       <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                         <input
@@ -174,27 +174,27 @@ export default function Cart() {
                           onChange={handleCheckAll}
                         />
                       </div>
-                      <div className='flex-grow text-black'>Sản phẩm</div>
+                      <div className='flex-grow text-black'>Choose all</div>
                     </div>
                   </div>
-                  <div className='col-span-6'>
-                    <div className='grid grid-cols-5 text-center'>
-                      <div className='col-span-2'>Đơn giá</div>
-                      <div className='col-span-1'>Số lượng</div>
-                      <div className='col-span-1'>Số tiền</div>
-                      <div className='col-span-1'>Thao tác</div>
+                  <div className='col-span-7'>
+                    <div className='grid grid-cols-4 text-center'>
+                      <div className='col-span-1 '>Price</div>
+                      <div className='col-span-1 '>Quantity</div>
+                      <div className='col-span-1 '>Total</div>
+                      <div className='col-span-1 '>Action</div>
                     </div>
                   </div>
                 </div>
                 {extendedPurchases.length > 0 && (
-                  <div className='my-3 rounded-sm bg-white p-5 shadow'>
+                  <div className='my-3 rounded-md bg-white p-5 shadow'>
                     {extendedPurchases &&
                       extendedPurchases.map((purchase, index) => (
                         <div
                           key={purchase._id}
-                          className='mb-5 grid grid-cols-12 items-center rounded-sm border border-gray-200 bg-white py-5 px-4 text-center text-sm text-gray-500 first:mt-0'
+                          className='mb-5 grid grid-cols-12 items-center border-b bg-white py-5 px-2 first:mt-0'
                         >
-                          <div className='col-span-6'>
+                          <div className='col-span-5'>
                             <div className='flex'>
                               <div className='flex flex-shrink-0 items-center justify-center pr-3'>
                                 <input
@@ -221,7 +221,7 @@ export default function Cart() {
                                         name: purchase.product.name,
                                         id: purchase.product._id
                                       })}`}
-                                      className='text-left line-clamp-2'
+                                      className='text-left text-md font-medium line-clamp-2 '
                                     >
                                       {purchase.product.name}
                                     </Link>
@@ -230,17 +230,19 @@ export default function Cart() {
                               </div>
                             </div>
                           </div>
-                          <div className='col-span-6'>
+                          <div className='col-span-7'>
                             <div className='grid grid-cols-5 items-center'>
-                              <div className='col-span-2'>
-                                <div className='flex items-center justify-center'>
-                                  <span className='text-gray-300 line-through'>
+                              <div className='col-span-1'>
+                                <div className='flex flex-col items-center justify-center '>
+                                  <span className='text-gray-300  text-base line-through'>
                                     ₫{formatCurrency(purchase.product.price_before_discount)}
                                   </span>
-                                  <span className='ml-3'>₫{formatCurrency(purchase.product.price)}</span>
+                                  <span className='ml-3  text-base font-medium '>
+                                    ₫{formatCurrency(purchase.product.price)}
+                                  </span>
                                 </div>
                               </div>
-                              <div className='col-span-1'>
+                              <div className='col-span-2 flex items-center justify-center'>
                                 <QuantityController
                                   max={purchase.product.quantity}
                                   value={purchase.buy_count}
@@ -263,16 +265,48 @@ export default function Cart() {
                                 />
                               </div>
                               <div className='col-span-1'>
-                                <span className='text-orange'>
+                                <span className='text-bold text-base text-orange'>
                                   ₫{formatCurrency(purchase.product.price * purchase.buy_count)}
                                 </span>
                               </div>
                               <div className='col-span-1'>
-                                <button
-                                  onClick={handleDelete(index)}
-                                  className='bg-none text-black transition-colors hover:text-orange'
-                                >
-                                  Xóa
+                                <button onClick={handleDelete(index)} className='bg-none '>
+                                  <svg
+                                    width='31'
+                                    height='31'
+                                    viewBox='0 0 31 31'
+                                    fill='none'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                  >
+                                    <path
+                                      d='M3.95166 7.60991H6.45166H26.4517'
+                                      stroke='black'
+                                      stroke-width='2'
+                                      stroke-linecap='round'
+                                      stroke-linejoin='round'
+                                    />
+                                    <path
+                                      d='M23.9517 7.60991V25.1099C23.9517 25.773 23.6883 26.4088 23.2194 26.8777C22.7506 27.3465 22.1147 27.6099 21.4517 27.6099H8.95166C8.28862 27.6099 7.65273 27.3465 7.18389 26.8777C6.71505 26.4088 6.45166 25.773 6.45166 25.1099V7.60991M10.2017 7.60991V5.10991C10.2017 4.44687 10.4651 3.81098 10.9339 3.34214C11.4027 2.8733 12.0386 2.60991 12.7017 2.60991H17.7017C18.3647 2.60991 19.0006 2.8733 19.4694 3.34214C19.9383 3.81098 20.2017 4.44687 20.2017 5.10991V7.60991'
+                                      stroke='black'
+                                      stroke-width='2'
+                                      stroke-linecap='round'
+                                      stroke-linejoin='round'
+                                    />
+                                    <path
+                                      d='M12.7017 13.8599V21.3599'
+                                      stroke='black'
+                                      stroke-width='2'
+                                      stroke-linecap='round'
+                                      stroke-linejoin='round'
+                                    />
+                                    <path
+                                      d='M17.7017 13.8599V21.3599'
+                                      stroke='black'
+                                      stroke-width='2'
+                                      stroke-linecap='round'
+                                      stroke-linejoin='round'
+                                    />
+                                  </svg>
                                 </button>
                               </div>
                             </div>
@@ -282,40 +316,43 @@ export default function Cart() {
                   </div>
                 )}
               </div>
+              
             </div>
-            <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-sm border border-gray-100 bg-white p-5 shadow sm:flex-row sm:items-center'>
+            <div className='text-right mt-2'>
+                <Button onClick={handleDeletePurchases} className='bg-red-400 hover:bg-red-500'>
+                  Cancle all
+                </Button>
+              </div>
+            <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-md border bg-white p-5 shadow md:flex-row md:items-center'>
               <div className='flex items-center'>
-                <div className='flex flex-shrink-0 items-center justify-center pr-3'>
+                <div>
                   <input
                     type='checkbox'
-                    className='h-5 w-5 accent-orange'
+                    className='che h-5 w-5 accent-orange'
                     checked={isAllChecked}
                     onChange={handleCheckAll}
                   />
                 </div>
-                <button className='mx-3 border-none bg-none'>Chọn tất cả ({extendedPurchases.length})</button>
-                <button onClick={handleDeletePurchases} className='mx-3 border-none bg-none'>
-                  Xóa
-                </button>
+                <div className='mx-3 border-none bg-none text-base'>Choose all ({extendedPurchases.length})</div>
               </div>
 
-              <div className='mt-5 flex flex-col sm:ml-auto sm:mt-0 sm:flex-row sm:items-center'>
+              <div className='mt-5 flex flex-col md:ml-auto md:mt-0 md:flex-row md:items-center'>
                 <div>
-                  <div className='flex items-center sm:justify-end'>
-                    <div>Tổng thanh toán ({checkedPurchasesLength})sản phẩm:</div>
+                  <div className='flex items-center md:justify-end'>
+                    <div className='font-medium text-base'>Total checkout of ({checkedPurchasesLength}) item:</div>
                     <div className='ml-2 text-2xl text-orange'>₫{formatCurrency(totalCheckedPurchasePrice)}</div>
                   </div>
-                  <div className='flex items-center text-sm sm:justify-end'>
-                    <div className='text-gray-500'>Tiết kiệm</div>
-                    <div className='ml-6 text-orange'>₫{formatCurrency(totalCheckedPurchaseSavingPrice)}</div>
+                  <div className='flex items-center text-md md:justify-end'>
+                    <div className='font-medium text-base'>Save money</div>
+                    <div className='ml-3 text-orange'>₫{formatCurrency(totalCheckedPurchaseSavingPrice)}</div>
                   </div>
                 </div>
                 <Button
                   onClick={handleBuyPurchases}
                   disabled={buyProductMutation.isLoading}
-                  className='mt-5 flex h-10 w-52 items-center justify-center bg-red-500 text-sm uppercase text-white hover:bg-red-600 sm:ml-4 sm:mt-0'
+                  className='bg-green-400 mt-2 hover:bg-green-500 ml-3'
                 >
-                  Mua hàng
+                  Buy
                 </Button>
               </div>
             </div>
@@ -323,13 +360,13 @@ export default function Cart() {
         ) : (
           <div className='text-center'>
             <img src={noProduct} alt='no purchase' className='mx-auto h-24 w-24' />
-            <div className='mt-5 font-bold text-gray-400'>Giỏ hàng của bạn còn trống</div>
+            <div className='text-gray-400 mt-5 font-bold'>Giỏ hàng của bạn còn trống</div>
             <div className='mt-5 text-center'>
               <Link
                 to={path.home}
-                className=' rounded-sm bg-orange px-10 py-2  uppercase text-white transition-all hover:bg-orange/80'
+                className=' rounded-md bg-orange px-10 py-2  uppercase text-white transition-all hover:bg-orange/80'
               >
-                Mua ngay
+                Buy now
               </Link>
             </div>
           </div>
