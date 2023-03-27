@@ -41,6 +41,11 @@ body{
   height: 100%;
   object-fit: cover;
 }
+@media (max-width: 768px) {
+  .swiper-button-next,.swiper-button-prev{
+    display: none;
+  }
+}
 .swiper-button-next{
   border-radius: 50%;
   background-color: #fff;

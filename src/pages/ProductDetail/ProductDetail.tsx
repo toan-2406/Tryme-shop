@@ -16,6 +16,8 @@ import { toast } from 'react-toastify'
 import path from 'src/constants/path'
 import { Helmet } from 'react-helmet-async'
 import { convert } from 'html-to-text'
+import Slider from 'src/components/Slider'
+import { SwiperSlide } from 'swiper/react'
 interface CartData {
   product_id: string
   buy_count: number
@@ -141,12 +143,12 @@ export default function ProductDetail() {
           })}
         />
       </Helmet>
-      <div className='container'>
-        <div className='bg-white p-4 shadow'>
-          <div className='grid grid-cols-12 gap-9'>
-            <div className='col-span-5'>
+      <div className='container pt-20'>
+        <div className='bg-white p-4 '>
+          <div className='grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-20'>
+            <div className='md:col-span-5'>
               <div
-                className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] shadow'
+                className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] '
                 onMouseMove={handleZoom}
                 onMouseLeave={handleRemoveZoom}
               >
@@ -203,93 +205,70 @@ export default function ProductDetail() {
                 </button>
               </div>
             </div>
-            <div className='col-span-7'>
-              <h1 className='text-xl font-medium capitalize'>{product.name}</h1>
-              <div className='mt-8 flex items-center'>
+            <div className='md:col-span-7'>
+              <h1 className='text-3xl md:text-4xl font-bold capitalize'>{product.name}</h1>
+              <div className='relative mt-2'>
+                {/* <div className='text-gray-500 text-2xl font-medium line-through'>đ{formatCurrency(product.price_before_discount)}</div> */}
+                <div className=' text-2xl font-bold text-black'>đ{formatCurrency(product.price)}</div>
+                {/* <div className='absolute rounded-sm bg-orange px-1 py-[2px] text-xs font-semibold uppercase text-white'>
+                  {rateStale(product.price_before_discount, product.price)} giảm
+                </div> */}
+              </div>
+              <div className='mt-4 flex items-center'>
                 <div className='flex items-center'>
-                  <span className='mr-1 border-b border-b-orange text-orange'>{product.rating}</span>
                   <ProductRating
                     rating={product.rating}
                     activeClassName='fill-orange text-orange h-4 w-4'
                     nonActiveClassName='fill-gray-300 text-gray-300 h-4 w-4'
                   />
-                </div>
-                <div className='mx-4 h-4 w-[1px] bg-gray-300'></div>
-                <div>
-                  <span>{formatNumberToSocialStyle(product.sold)} Đã Bán</span>
-                  <span className='mt-1 text-gray-500'></span>
+                  <span className='ml-2 text-sm font-medium'>
+                    ({product.rating}) stars • {formatNumberToSocialStyle(product.sold)} đã bán
+                  </span>
                 </div>
               </div>
-              <div className='mt-8 flex items-center bg-gray-50 px-5 py-4'>
-                <div className='text-gray-500 line-through'>đ{formatCurrency(product.price_before_discount)}</div>
-                <div className='ml-3 text-3xl font-medium text-orange'>{formatCurrency(product.price)}</div>
-                <div className='ml-4 rounded-sm bg-orange px-1 py-[2px] text-xs font-semibold uppercase text-white'>
-                  {rateStale(product.price_before_discount, product.price)} giảm
+
+              <div className='mt-4'>
+                <div className='capitailze text-base font-medium'>Quantity</div>
+                <div className='mt-1 flex items-center'>
+                  <QuantityController
+                    onDecrease={handleBuyCount}
+                    onIncrease={handleBuyCount}
+                    onType={handleBuyCount}
+                    value={buyCount}
+                    max={product.quantity}
+                  />
+                  <div className='ml-2 text-sm font-medium'>{product.quantity} sản phẩm có sẵn </div>
                 </div>
               </div>
-              <div className='mt-8 flex items-center'>
-                <div className='capitailze text-gray-500'>Số lượng</div>
-                <QuantityController
-                  onDecrease={handleBuyCount}
-                  onIncrease={handleBuyCount}
-                  onType={handleBuyCount}
-                  value={buyCount}
-                  max={product.quantity}
-                />
-                <div className='ml-6 text-sm text-gray-500'>{product.quantity} sản phẩm có sẵn </div>
-              </div>
-              <div className='mt-8 flex items-center'>
-                <button
-                  onClick={addToCart}
-                  className='flex h-12 items-center justify-center rounded-sm border border-orange bg-orange/10 px-5 capitalize text-orange shadow-sm hover:bg-orange/5'
-                >
-                  <svg
-                    enableBackground='new 0 0 15 15'
-                    viewBox='0 0 15 15'
-                    x={0}
-                    y={0}
-                    className='mr-[10px] h-5 w-5 fill-current stroke-orange text-orange '
-                  >
-                    <g>
-                      <g>
-                        <polyline
-                          fill='none'
-                          points='.5 .5 2.7 .5 5.2 11 12.4 11 14.5 3.5 3.7 3.5'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                          strokeMiterlimit={10}
-                        />
-                        <circle cx={6} cy='13.5' r={1} stroke='none' />
-                        <circle cx='11.5' cy='13.5' r={1} stroke='none' />
-                      </g>
-                      <line fill='none' strokeLinecap='round' strokeMiterlimit={10} x1='7.5' x2='10.5' y1={7} y2={7} />
-                      <line fill='none' strokeLinecap='round' strokeMiterlimit={10} x1={9} x2={9} y1='8.5' y2='5.5' />
-                    </g>
-                  </svg>
-                  Thêm vào giỏ hàng
-                </button>
-                <button
-                  onClick={buyNow}
-                  className='fkex ml-4 h-12 min-w-[5rem] items-center justify-center rounded-sm bg-orange px-5 capitalize text-white shadow-sm outline-none hover:bg-orange/90'
-                >
-                  Mua ngay
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='mt-8'>
-        <div className='container'>
-          <div className='mt-8'>
-            <div className=' bg-white p-4 shadow'>
-              <div className='rounded bg-gray-50 p-4 text-lg capitalize text-slate-700'>Mô tả sản phẩm</div>
-              <div className='mx-4 mt-12 mb-4 text-sm leading-loose'>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(product.description)
-                  }}
-                />
+
+        
+             <button
+                onClick={addToCart}
+                className='my-4 h-16 w-full rounded-[100px] bg-pink text-base font-bold capitalize shadow-lg'
+              >
+                Thêm vào giỏ hàng
+              </button>
+          <button
+                onClick={buyNow}
+                className='h-16 w-full rounded-[100px] bg-black text-base font-bold capitalize text-white shadow-lg'
+              >
+                Mua ngay
+              </button>
+              <p className='text-center text-[12px] mt-3 font-normal'>Free shipping over $50</p>
+
+              <div className='mt-4'>
+                <div className='mt-4'>
+                  <div className=' bg-white p-4 '>
+                    <div className='text-lg font-bold '>Description</div>
+                    <div className='mt-4 mb-4 text-base tracking-[.0010em]'>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(product.description)
+                        }}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -297,17 +276,21 @@ export default function ProductDetail() {
       </div>
 
       <div className='mt-8'>
-        <div className='container'>
-          <div className='uppercase text-gray-400'>CÓ THỂ BẠN CŨNG THÍCH</div>
-          {productsData && (
-            <div className='mt-6 grid grid-cols-2 gap-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6'>
-              {productsData.data.data.products.map((product) => (
-                <div key={product._id} className='col-span-1'>
+      <div className='container'>
+          <div className='font-russo text-3xl uppercase'>Simmilar Products</div>
+          
+          <div>
+          <Slider>
+            {productsData?.data.data.products.map((product) => {
+              return (
+                <SwiperSlide key={product._id}>
                   <Product product={product} />
-                </div>
-              ))}
-            </div>
-          )}
+                </SwiperSlide>
+              )
+            })}
+          </Slider>
+          </div>
+        
         </div>
       </div>
     </div>

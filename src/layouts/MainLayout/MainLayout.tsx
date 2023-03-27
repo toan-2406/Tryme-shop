@@ -9,7 +9,7 @@ export default function MainLayout({ children }: Props) {
   return (
     <div>
       <Header />
-      <div className='pt-[72px] pb-6'>{children}</div>
+      <div className='pb-6'>{children}</div>
       <Footer />
     </div>
   )

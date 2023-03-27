@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <div className="bg-pink h-screen xl:max-h-[700px] ">
+    <div className="bg-pink h-screen xl:max-h-[900px] pt-20 ">
       <div className="container h-full">
         <div className=" h-full grid grid-cols-1 md:grid-cols-2">
           <div className="grid content-center gap-2 md:gap-4">

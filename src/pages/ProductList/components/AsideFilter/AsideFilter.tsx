@@ -48,7 +48,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
 
   const onSubmit = handleSubmit((data) => {
     navigate({
-      pathname: path.home,
+      pathname: path.products,
       search: createSearchParams({
         ...queryConfig,
         price_max: data.price_max,
@@ -59,7 +59,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
 
   const handleRemoveAll = () => {
     navigate({
-      pathname: path.home,
+      pathname: path.products,
       search: createSearchParams(omit(queryConfig, ['price_min', 'price_max', 'rating_filter', 'category'])).toString()
     })
   }
@@ -67,7 +67,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
   return (
     <div className='py-4'>
       <Link
-        to={path.home}
+        to={path.products}
         className={classNames('flex items-center font-bold', {
           'text-orange': !category
         })}
@@ -95,7 +95,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             <li className='py-2 pl-2' key={categoryItem._id}>
               <Link
                 to={{
-                  pathname: path.home,
+                  pathname: path.products,
                   search: createSearchParams({
                     ...queryConfig,
                     category: categoryItem._id
@@ -116,7 +116,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
           )
         })}
       </ul>
-      <Link to={path.home} className='mt-4 flex items-center font-bold uppercase'>
+      <Link to={path.products} className='mt-4 flex items-center font-bold uppercase'>
         <svg
           enableBackground='new 0 0 15 15'
           viewBox='0 0 15 15'

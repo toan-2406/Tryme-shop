@@ -39,7 +39,7 @@ export default function Footer() {
               {
                 policyLink.map((policy, index) => {
                   return <li key={index} className="inline-block ml-2">
-                    <a href={policy.path} className='text-black text-sm font-medium'>
+                    <a href={policy.path} className='text-black text-center text-sm font-medium'>
                       {policy.displayName}
                     </a>
                   </li>
