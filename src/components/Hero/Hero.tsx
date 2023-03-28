@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import useLazyLoad from "src/hooks/useLazyLoad";
+import Skeleton from "../Skeleton";
 
 export default function Hero() {
+  const LazyImage = useLazyLoad({
+    loadingComponent: <Skeleton />,
+    threshold: 100,
+  });
   return (
     <div className="bg-pink h-screen xl:max-h-[900px] pt-20 ">
       <div className="container h-full">
@@ -16,7 +22,7 @@ export default function Hero() {
             </Link>
           </div>
           <div className="pt-2">
-            <img className="bg-cover h-full rounded-tl-[200px]" src="https://images.unsplash.com/photo-1661956602944-249bcd04b63f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="ecommerce" />
+          <img loading="lazy" className="bg-cover h-full rounded-tl-[200px]" src="https://images.unsplash.com/photo-1661956602944-249bcd04b63f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="ecommerce" />
           </div>
         </div>
       </div>

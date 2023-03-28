@@ -19,6 +19,8 @@ import UserLayout from './pages/User/layouts/UserLayout'
 const Login = lazy(() => import('./pages/Login'))
 const ProductList = lazy(() => import('./pages/ProductList'))
 const Homepage = lazy(() => import('./pages/Home'))
+const Contact = lazy(() => import('./pages/Contact'))
+const About = lazy(() => import('./pages/About'))
 const Profile = lazy(() => import('./pages/User/pages/Profile'))
 const Register = lazy(() => import('./pages/Register'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))
@@ -144,6 +146,26 @@ export default function useRouteElements() {
         <MainLayout>
           <Suspense>
             <Homepage />
+          </Suspense>
+        </MainLayout>
+      )
+    },
+    {
+      path: path.contact,
+      element: (
+        <MainLayout>
+          <Suspense>
+            <Contact />
+          </Suspense>
+        </MainLayout>
+      )
+    },
+    {
+      path: path.about,
+      element: (
+        <MainLayout>
+          <Suspense>
+            <About />
           </Suspense>
         </MainLayout>
       )

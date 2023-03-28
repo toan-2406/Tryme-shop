@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import omit from 'lodash/omit'
 import { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { createSearchParams, Link, useNavigate } from 'react-router-dom'
+import { createSearchParams, Link, NavLink, useNavigate } from 'react-router-dom'
 import authApi from 'src/apis/auth.api'
 import purchaseApi from 'src/apis/purchase.api'
 import noProduct from 'src/assets/images/no-product.png'
@@ -18,6 +18,7 @@ import { formatCurrency, getAvatarURL } from 'src/utils/utils'
 import NavHeader from '../NavHeader'
 import Popover from '../Popover'
 import logo from 'src/assets/images/logo.png'
+import useClickOutside from 'src/hooks/useClickOutSide'
 type FormData = Pick<Schema, 'name'>
 
 const nameSchema = schema.pick(['name'])
@@ -25,19 +26,20 @@ const MAX_INCART = 5
 
 export default function Header() {
   const { onSubmitSearch, register } = useSearchProducts()
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0)
   const [isOpen, setIsOpen] = useState(false)
+  const [isActiveNavLink, setIsActiveNavLink] = useState(false)
   useEffect(() => {
     const handleScroll = () => {
-      const position = window.pageYOffset;
-      setScrollPosition(position);
-    };
-  
-    window.addEventListener('scroll', handleScroll);
+      const position = window.pageYOffset
+      setScrollPosition(position)
+    }
+
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
   const { isAuthenticated, setIsAuthenticated, profile, setProfile } = useContext(AppContext)
   const { data: purchasesInCartData } = useQuery({
     queryKey: ['purchases', { status: purchasesStatus.inCart }],
@@ -60,48 +62,88 @@ export default function Header() {
   const handleLogout = () => {
     logoutMutation.mutate()
   }
-
+  const ref = useClickOutside(() => setIsOpen(false));
+ 
   return (
-    <header className={`fixed top-0 z-20 w-full py-4 transition-all ease-linear duration-100 text-white ${scrollPosition >= 100 ? 'bg-pink shadow-lg' : ''}`}>
+    <header
+      className={`fixed top-0 z-20 w-full py-4 text-white transition-all duration-100 ease-linear ${
+        scrollPosition >= 100 ? 'bg-pink shadow-lg' : ''
+      }`}
+    >
       <div className='container'>
         <div className='flex items-center justify-between gap-2'>
-          <div className='bg-white rounded-md z-50 lg:hidden' onClick={()=> setIsOpen(!isOpen)}><svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4.23895 15.2196H26.739" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.23895 7.7196H26.739" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M4.23895 22.7196H26.739" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>
-<div>
-<Link to='/' >
-            <img src={logo} alt="logo" />
-          </Link>
-</div>
-          
-          <nav className={`fixed top-0 left-0 w-3/4 z-40 lg:relative lg:translate-x-0 transition-all ease-linear  ${isOpen ? 'translate-x-0' : 'translate-x-[-100%]'}`}>
-            <ul className='bg-white h-screen lg:bg-transparent lg:h-auto flex flex-col lg:flex-row items-center justify-center gap-6'>
+          <div className='z-50 rounded-md bg-white lg:hidden' onClick={() => setIsOpen(!isOpen)}>
+            <svg width='31' height='31' viewBox='0 0 31 31' fill='none' xmlns='http://www.w3.org/2000/svg'>
+              <path
+                d='M4.23895 15.2196H26.739'
+                stroke='black'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+              <path
+                d='M4.23895 7.7196H26.739'
+                stroke='black'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+              <path
+                d='M4.23895 22.7196H26.739'
+                stroke='black'
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+              />
+            </svg>
+          </div>
+          <div>
+            <Link to='/'>
+              <img src={logo} alt='logo' />
+            </Link>
+          </div>
+
+          <nav
+            className={`fixed top-0 left-0 z-40 w-3/4 transition-all ease-linear lg:relative lg:translate-x-0  ${
+              isOpen ? 'translate-x-0' : 'translate-x-[-100%]'
+            }`}
+            ref={ref}
+          >
+            <ul className='flex h-screen flex-col items-center justify-center gap-6 bg-white lg:h-auto lg:flex-row lg:bg-transparent'>
               {navLink.map((navLink, index) => {
                 return (
                   <li key={index} className='ml-3 inline-block'>
-                    <Link to={navLink.path} className='font-bold text-gray'>
+                    <NavLink to={navLink.path} className={({ isActive }) => (isActive ? "font-bold text-red-500" : "font-bold text-gray")} >
                       {navLink.displayName}
-                    </Link>
+                    </NavLink>
                   </li>
                 )
               })}
             </ul>
           </nav>
-          <div className='flex gap-[10px] items-center'>
-            <div >
-            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M13.75 23.75C19.2728 23.75 23.75 19.2728 23.75 13.75C23.75 8.22715 19.2728 3.75 13.75 3.75C8.22715 3.75 3.75 8.22715 3.75 13.75C3.75 19.2728 8.22715 23.75 13.75 23.75Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M26.25 26.25L20.8125 20.8125" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+          <div className='flex items-center gap-[10px]'>
+            <div>
+              <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                <path
+                  d='M13.75 23.75C19.2728 23.75 23.75 19.2728 23.75 13.75C23.75 8.22715 19.2728 3.75 13.75 3.75C8.22715 3.75 3.75 8.22715 3.75 13.75C3.75 19.2728 8.22715 23.75 13.75 23.75Z'
+                  stroke='black'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+                <path
+                  d='M26.25 26.25L20.8125 20.8125'
+                  stroke='black'
+                  strokeWidth='2'
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                />
+              </svg>
             </div>
             <div>
               <Popover
                 renderPopover={
-                  <div className='relative  max-w-[300px] md:max-w-[400px] rounded-md bg-white shadow-lg  '>
+                  <div className='relative  max-w-[300px] rounded-md bg-white shadow-lg md:max-w-[400px]  '>
                     {purchasesInCart && purchasesInCart.length > 0 ? (
                       <div className='p-3'>
                         <div className='text-sm font-medium capitalize'>Shopping cart</div>
@@ -119,7 +161,9 @@ export default function Header() {
                                 <div className='truncate text-sm '>{purchase.product.name}</div>
                               </div>
                               <div className='ml-2 flex-shrink-0'>
-                                <span className='text-orange text-semibold text-sm'>đ{formatCurrency(purchase.product.price)}</span>
+                                <span className='text-semibold text-sm text-orange'>
+                                  đ{formatCurrency(purchase.product.price)}
+                                </span>
                               </div>
                             </div>
                           ))}
@@ -146,12 +190,29 @@ export default function Header() {
                 }
               >
                 <div className='relative'>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M7.5 2.5L3.75 7.5V25C3.75 25.663 4.01339 26.2989 4.48223 26.7678C4.95107 27.2366 5.58696 27.5 6.25 27.5H23.75C24.413 27.5 25.0489 27.2366 25.5178 26.7678C25.9866 26.2989 26.25 25.663 26.25 25V7.5L22.5 2.5H7.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.75 7.5H26.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20 12.5C20 13.8261 19.4732 15.0979 18.5355 16.0355C17.5979 16.9732 16.3261 17.5 15 17.5C13.6739 17.5 12.4021 16.9732 11.4645 16.0355C10.5268 15.0979 10 13.8261 10 12.5" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                  <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path
+                      d='M7.5 2.5L3.75 7.5V25C3.75 25.663 4.01339 26.2989 4.48223 26.7678C4.95107 27.2366 5.58696 27.5 6.25 27.5H23.75C24.413 27.5 25.0489 27.2366 25.5178 26.7678C25.9866 26.2989 26.25 25.663 26.25 25V7.5L22.5 2.5H7.5Z'
+                      stroke='black'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M3.75 7.5H26.25'
+                      stroke='black'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M20 12.5C20 13.8261 19.4732 15.0979 18.5355 16.0355C17.5979 16.9732 16.3261 17.5 15 17.5C13.6739 17.5 12.4021 16.9732 11.4645 16.0355C10.5268 15.0979 10 13.8261 10 12.5'
+                      stroke='black'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                  </svg>
 
                   {purchasesInCart && purchasesInCart.length > 0 && (
                     <span className='absolute top-[-5px] left-[17px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange '>
@@ -165,10 +226,10 @@ export default function Header() {
               <Popover
                 renderPopover={
                   <div className=' relative rounded-sm shadow-md'>
-                    <Link to={path.profile} className='block py-2 px-3 hover:bg-slate-100 hover:text-orange'>
+                    <Link to={path.profile} className='item'>
                       My account
                     </Link>
-                    <Link to='/' className='block bg-white py-2 px-3 hover:bg-slate-100 hover:text-orange'>
+                    <Link to={path.historyPurchase} className='item'>
                       Order buy
                     </Link>
                     <button
@@ -181,7 +242,7 @@ export default function Header() {
                 }
                 className='hover:text-gray-300 ml-6 flex cursor-pointer items-center py-1'
               >
-                <div className=' h-10 w-10 p-1 bg-white rounded-full'>
+                <div className=' h-10 w-10 rounded-full bg-white p-1'>
                   <img
                     src={getAvatarURL(profile?.avatar)}
                     alt='avatar'
@@ -192,11 +253,22 @@ export default function Header() {
             ) : (
               <div>
                 <Link to={path.login}>
-                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M25 26.25V23.75C25 22.4239 24.4732 21.1521 23.5355 20.2145C22.5979 19.2768 21.3261 18.75 20 18.75H10C8.67392 18.75 7.40215 19.2768 6.46447 20.2145C5.52678 21.1521 5 22.4239 5 23.75V26.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M15 13.75C17.7614 13.75 20 11.5114 20 8.75C20 5.98858 17.7614 3.75 15 3.75C12.2386 3.75 10 5.98858 10 8.75C10 11.5114 12.2386 13.75 15 13.75Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-
+                  <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                    <path
+                      d='M25 26.25V23.75C25 22.4239 24.4732 21.1521 23.5355 20.2145C22.5979 19.2768 21.3261 18.75 20 18.75H10C8.67392 18.75 7.40215 19.2768 6.46447 20.2145C5.52678 21.1521 5 22.4239 5 23.75V26.25'
+                      stroke='black'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                    <path
+                      d='M15 13.75C17.7614 13.75 20 11.5114 20 8.75C20 5.98858 17.7614 3.75 15 3.75C12.2386 3.75 10 5.98858 10 8.75C10 11.5114 12.2386 13.75 15 13.75Z'
+                      stroke='black'
+                      strokeWidth='2'
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                    />
+                  </svg>
                 </Link>
               </div>
             )}

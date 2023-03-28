@@ -4,6 +4,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  .item {
+    @apply block w-full py-2 px-3 bg-white hover:bg-slate-100 hover:text-orange;
+  }
+  .line-hr{
+    @apply my-2 h-[1px] bg-gray opacity-50
+  }
+}
+
 html {
   height: 100%;
   line-height: 1.2;

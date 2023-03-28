@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { navLink, policyLink } from 'src/constants/fakedata'
 export default function Footer() {
   return (
@@ -22,9 +22,9 @@ export default function Footer() {
               {
                 navLink.map((navLink, index) => {
                   return <li key={index} className="inline-block ml-3">
-                    <Link to={navLink.path} className='text-gray font-bold'>
+                    <NavLink to={navLink.path} className={({ isActive }) => (isActive ? "font-bold text-red-500" : "font-bold text-gray")} >
                       {navLink.displayName}
-                    </Link>
+                    </NavLink>
                   </li>
                 })
               }

@@ -281,30 +281,30 @@ export default function Cart() {
                                     <path
                                       d='M3.95166 7.60991H6.45166H26.4517'
                                       stroke='black'
-                                      stroke-width='2'
-                                      stroke-linecap='round'
-                                      stroke-linejoin='round'
+                                      strokeWidth='2'
+                                      strokeLinecap='round'
+                                      strokeLinejoin='round'
                                     />
                                     <path
                                       d='M23.9517 7.60991V25.1099C23.9517 25.773 23.6883 26.4088 23.2194 26.8777C22.7506 27.3465 22.1147 27.6099 21.4517 27.6099H8.95166C8.28862 27.6099 7.65273 27.3465 7.18389 26.8777C6.71505 26.4088 6.45166 25.773 6.45166 25.1099V7.60991M10.2017 7.60991V5.10991C10.2017 4.44687 10.4651 3.81098 10.9339 3.34214C11.4027 2.8733 12.0386 2.60991 12.7017 2.60991H17.7017C18.3647 2.60991 19.0006 2.8733 19.4694 3.34214C19.9383 3.81098 20.2017 4.44687 20.2017 5.10991V7.60991'
                                       stroke='black'
-                                      stroke-width='2'
-                                      stroke-linecap='round'
-                                      stroke-linejoin='round'
+                                      strokeWidth='2'
+                                      strokeLinecap='round'
+                                      strokeLinejoin='round'
                                     />
                                     <path
                                       d='M12.7017 13.8599V21.3599'
                                       stroke='black'
-                                      stroke-width='2'
-                                      stroke-linecap='round'
-                                      stroke-linejoin='round'
+                                      strokeWidth='2'
+                                      strokeLinecap='round'
+                                      strokeLinejoin='round'
                                     />
                                     <path
                                       d='M17.7017 13.8599V21.3599'
                                       stroke='black'
-                                      stroke-width='2'
-                                      stroke-linecap='round'
-                                      stroke-linejoin='round'
+                                      strokeWidth='2'
+                                      strokeLinecap='round'
+                                      strokeLinejoin='round'
                                     />
                                   </svg>
                                 </button>
