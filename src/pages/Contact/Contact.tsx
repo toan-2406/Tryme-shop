@@ -29,7 +29,7 @@ export default function Contact() {
           </form>
         </div>
         <div className='md:col-span-6'>
-          <img src={image} alt="contact us" className='bg-cover h-full' />
+          <img loading="lazy" src={image} alt="contact us" className='bg-cover h-full' />
         </div>
       </div>
       <div className='grid grid-cols-2 gap-4 md:grid-cols-12'>
