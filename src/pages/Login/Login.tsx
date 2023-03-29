@@ -68,7 +68,7 @@ const Login = () => {
       <div className='container '>
         <div className='grid grid-cols-1 py-4 lg:grid-cols-12 gap-4 '>
           <div className='col-span-12 md:col-span-7 hidden md:block'>
-            <img src={image} alt="imgae" className='bg-contain'/>
+            <img loading="lazy" src={image} alt="imgae" className='bg-contain'/>
           </div>
           <div className='lg:col-span-5 col-span-12 grid content-center'>
             <form onSubmit={onSubmit} className='rounded-md bg-white px-5 py-10 md:px-10 shadow-sm' noValidate>
