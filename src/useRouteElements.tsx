@@ -143,11 +143,11 @@ export default function useRouteElements() {
       path: '',
       index: true,
       element: (
-        <MainLayout>
           <Suspense>
+        <MainLayout>
             <Homepage />
-          </Suspense>
         </MainLayout>
+          </Suspense>
       )
     },
     {

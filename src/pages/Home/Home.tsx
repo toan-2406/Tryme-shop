@@ -8,10 +8,9 @@ import useQueryConfig from 'src/hooks/useQueryConfig'
 import useQueryParams from 'src/hooks/useQueryParams'
 import { Product, ProductListConfig } from 'src/types/product.type'
 import { Helmet } from 'react-helmet-async'
-import Hero from 'src/components/Hero'
 import ProductSection from 'src/components/ProductSection'
 import { useSearchParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { lazy, useEffect, useState } from 'react'
 import { omit } from 'lodash'
 import ProductItem from '../ProductList/components/Product'
 import Slider from 'src/components/Slider'
@@ -20,6 +19,8 @@ import CategoryItem from 'src/components/CategoryItem'
 import {categoriesData} from 'src/constants/category'
 import Why from './componnents/Why'
 import Newsletter from './componnents/Newsletter'
+import Hero from './componnents/Hero'
+
 export type QueryConfig = {
   [key in keyof ProductListConfig]: string
 }
@@ -47,7 +48,7 @@ export default function Home() {
         <title>Trang sản phẩm | Tryme Shop</title>
         <meta name='description' content='Trang sản phẩm Tryme Shop' />
       </Helmet>
-      <Hero />
+    <Hero/>
       <div className='container relative'>
         <ProductSection title='Popular Products' subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit.' p='Popular' button='View all' link='/products'>
 
