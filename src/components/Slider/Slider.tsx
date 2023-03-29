@@ -25,7 +25,7 @@ interface Props {
                 spaceBetween: 20,
             },
             1200:{
-                slidesPerView: 5,
+                slidesPerView: 4,
                 spaceBetween: 20,
             }
            }
@@ -35,7 +35,7 @@ interface Props {
           className="mySwiper"
         >
            
-          {children}
+            {children}
         </Swiper>
       </>
     )

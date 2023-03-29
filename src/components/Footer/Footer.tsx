@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { navLink, policyLink } from 'src/constants/fakedata'
 export default function Footer() {
   return (
-    <footer className=' bg-neutral-100 '>
+    <footer className=' bg-neutral-100'>
       <div className='flex flex-col justify-center items-center pt-5 lg:pt-20 container'>
       <Link to='/'>
             <svg width="180" height="62" viewBox="0 0 180 62" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">

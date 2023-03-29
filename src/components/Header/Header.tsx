@@ -143,10 +143,10 @@ export default function Header() {
             <div>
               <Popover
                 renderPopover={
-                  <div className='relative  max-w-[300px] rounded-md bg-white shadow-lg md:max-w-[400px]  '>
+                  <div className='relative  max-w-[300px] rounded-md bg-[#e1e0da] md:max-w-[400px]  '>
                     {purchasesInCart && purchasesInCart.length > 0 ? (
                       <div className='p-3'>
-                        <div className='text-sm font-medium capitalize'>Shopping cart</div>
+                        <div className='text-sm font-semibold capitalize'>Shopping cart</div>
                         <div className='mt-5'>
                           {purchasesInCart.slice(0, MAX_INCART).map((purchase) => (
                             <div key={purchase._id} className='hover:bg-gray-100 mt-2 flex items-center py-2'>
@@ -158,18 +158,18 @@ export default function Header() {
                                 />
                               </div>
                               <div className='ml-2 flex-grow overflow-hidden'>
-                                <div className='truncate text-sm '>{purchase.product.name}</div>
+                                <div className='truncate text-sm font-medium '>{purchase.product.name}</div>
                               </div>
                               <div className='ml-2 flex-shrink-0'>
                                 <span className='text-semibold text-sm text-orange'>
-                                  đ{formatCurrency(purchase.product.price)}
+                                  {formatCurrency(purchase.product.price)} đ
                                 </span>
                               </div>
                             </div>
                           ))}
                         </div>
                         <div className='mt-6 flex items-center justify-between'>
-                          <div className='text-gray-500 text-xs capitalize'>
+                          <div className='text-gray-500 text-xs font-medium capitalize'>
                             {purchasesInCart.length > MAX_INCART ? purchasesInCart.length - MAX_INCART : ''} Add to cart
                           </div>
                           <Link
@@ -183,7 +183,7 @@ export default function Header() {
                     ) : (
                       <div className=' flex h-[300px] w-[300px] flex-col items-center justify-center p-2'>
                         <img src={noProduct} alt='no purchase' className='h-24 w-24' />
-                        <div className='mt-3 capitalize'>Chưa có sản phẩm</div>
+                        <div className='mt-3 capitalize'>Cart empty</div>
                       </div>
                     )}
                   </div>
@@ -215,9 +215,9 @@ export default function Header() {
                   </svg>
 
                   {purchasesInCart && purchasesInCart.length > 0 && (
-                    <span className='absolute top-[-5px] left-[17px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange '>
+                    <div className='absolute top-[-5px] left-[17px] rounded-full shadow-[0px_0px_4px_0px_#00000078] h-5 w-5 text-center font-bold bg-white text-xs text-red-600 '>
                       {purchasesInCart?.length}
-                    </span>
+                    </div>
                   )}
                 </div>
               </Popover>
@@ -225,7 +225,7 @@ export default function Header() {
             {isAuthenticated ? (
               <Popover
                 renderPopover={
-                  <div className=' relative rounded-sm shadow-md'>
+                  <div className=' relative'>
                     <Link to={path.profile} className='item'>
                       My account
                     </Link>
@@ -234,7 +234,7 @@ export default function Header() {
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className=' block w-full bg-white py-2 px-3 text-left hover:bg-slate-100 hover:text-orange'
+                      className=' block w-full bg-[#e1e0da] py-2 px-3 text-left hover:bg-slate-100 hover:text-orange'
                     >
                       Logout
                     </button>

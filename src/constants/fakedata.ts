@@ -1,3 +1,4 @@
+
 export const navLink = [
     {
       path: '/',
@@ -8,8 +9,8 @@ export const navLink = [
       displayName: 'Product'
     },
     {
-      path: '/about',
-      displayName: 'About'
+      path: '/sale',
+      displayName: 'Sale'
     },
     {
       path: '/contact-us',

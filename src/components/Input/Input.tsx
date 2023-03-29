@@ -28,7 +28,7 @@ export default function Input({
     <div className={className}>
       {lable && <label htmlFor={lable} className="text-base font-medium mb-2">{lable}</label>}
       {
-        type === 'textarea' ? <textarea className={classNameInput} placeholder={placeholder} name={name} rows={4}  ></textarea> : <input type={type} className={classNameInput} {...registerResult} {...rest} />
+        type === 'textarea' ? <textarea className={classNameInput} placeholder={placeholder} name={name} rows={4}  ></textarea> : <input placeholder={placeholder}  type={type} className={classNameInput} {...registerResult} {...rest} />
       }
       <div className={classNameError}>{errorMessage}</div>
     </div>

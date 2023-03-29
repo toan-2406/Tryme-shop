@@ -11,6 +11,6 @@ const path = {
   products: '/products',
   productDetail: '/products/:nameId',
   contact:'/contact-us',
-  about:'/about'
+  sale:'/sale'
 } as const
 export default path

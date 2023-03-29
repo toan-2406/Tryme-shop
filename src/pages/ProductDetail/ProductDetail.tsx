@@ -133,7 +133,7 @@ export default function ProductDetail() {
   return (
     <div className='bg-gray-200 '>
       <Helmet>
-        <title>{product.name} | Shopee Clone</title>
+        <title>{product.name} | Tryme Shop</title>
         <meta
           name='description'
           content={convert(product.description, {
@@ -145,7 +145,7 @@ export default function ProductDetail() {
       </Helmet>
       <div className='container pt-20'>
         <div className='bg-white p-4 '>
-          <div className='grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-20'>
+          <div className='grid grid-cols-1 gap-10 md:grid-cols-12 lg:gap-20'>
             <div className='md:col-span-5'>
               <div
                 className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] '
@@ -206,15 +206,17 @@ export default function ProductDetail() {
               </div>
             </div>
             <div className='md:col-span-7'>
-              <h1 className='text-2xl md:text-4xl font-bold capitalize'>{product.name}</h1>
+              <h1 className='text-2xl font-bold capitalize md:text-4xl'>{product.name}</h1>
               <div className=' mt-2 flex gap-3'>
-                <div className='text-gray-500 text-2xl font-medium line-through'>đ{formatCurrency(product.price_before_discount)}</div>
-                <div className='relative text-2xl font-bold inline text-black'>đ{formatCurrency(product.price)}
-                
-                <div className='absolute left-full w-3/4  top-[-20%] rounded-sm bg-orange px-1  py-1 text-xs font-semibold uppercase text-white'>
-                  {rateStale(product.price_before_discount, product.price)} sale
-                </div></div>
-                
+                <div className='text-gray-500 text-2xl font-medium line-through'>
+                  {formatCurrency(product.price_before_discount)} đ
+                </div>
+                <div className='relative inline text-2xl font-bold text-black'>
+                  {formatCurrency(product.price)} đ
+                  <span className='absolute left-3/4 top-[-70%] rounded-md bg-red-600 px-1 whitespace-nowrap  py-1 text-xs font-semibold uppercase text-white'>
+                    {rateStale(product.price_before_discount, product.price)} sale
+                  </span>
+                </div>
               </div>
               <div className='mt-4 flex items-center'>
                 <div className='flex items-center'>
@@ -243,20 +245,19 @@ export default function ProductDetail() {
                 </div>
               </div>
 
-        
-             <button
+              <button
                 onClick={addToCart}
-                className='my-4 h-16 w-full rounded-[100px] border border-gray-500 bg-pink text-base font-bold capitalize shadow-lg hover:bg-orange hover:text-white transition-all ease-linear'
+                className='border-gray-500 my-4 h-16 w-full rounded-[100px] border bg-pink text-base font-bold capitalize shadow-lg transition-all ease-linear hover:bg-orange hover:text-white'
               >
                 Add to cart
               </button>
-          <button
+              <button
                 onClick={buyNow}
-                className='h-16 w-full rounded-[100px] bg-black text-base font-bold capitalize text-white shadow-lg hover:bg-green-700  transition-all ease-linear'
+                className='h-16 w-full rounded-[100px] bg-black text-base font-bold capitalize text-white shadow-lg transition-all  ease-linear hover:bg-green-700'
               >
                 Buy now
               </button>
-              <p className='text-center text-[12px] mt-3 font-normal'>Free shipping over $50</p>
+              <p className='mt-3 text-center text-[12px] font-normal'>Free shipping over $50</p>
 
               <div className='mt-4'>
                 <div className='mt-4'>
@@ -278,21 +279,20 @@ export default function ProductDetail() {
       </div>
 
       <div className='mt-8'>
-      <div className='container'>
+        <div className='container'>
           <div className='font-russo text-3xl uppercase'>Simmilar Products</div>
-          
+
           <div>
-          <Slider>
-            {productsData?.data.data.products.map((product) => {
-              return (
-                <SwiperSlide key={product._id}>
-                  <Product product={product} />
-                </SwiperSlide>
-              )
-            })}
-          </Slider>
+            <Slider>
+              {productsData?.data.data.products.map((product) => {
+                return (
+                  <SwiperSlide key={product._id}>
+                    <Product product={product} />
+                  </SwiperSlide>
+                )
+              })}
+            </Slider>
           </div>
-        
         </div>
       </div>
     </div>

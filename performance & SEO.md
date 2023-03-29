@@ -41,7 +41,7 @@ Dùng `react-helmet-async` để thay đổi title, meta
 
 ```js
 <Helmet>
-  <title>{product.name} | Shopee Clone</title>
+  <title>{product.name} | Tryme Shop</title>
   <meta
     name='description'
     content={convert(product.description, {

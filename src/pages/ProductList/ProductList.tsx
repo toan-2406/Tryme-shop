@@ -41,8 +41,8 @@ export default function ProductList() {
   return (
     <div className='bg-gray-200'>
       <Helmet>
-        <title>Trang sản phẩm | Shopee Clone</title>
-        <meta name='description' content='Trang sản phẩm shopee Clone' />
+        <title>Trang sản phẩm | Tryme Shop</title>
+        <meta name='description' content='Trang sản phẩm Tryme Shop' />
       </Helmet>
       <div className='container relative pt-20'>
         <div className='grid grid-cols-12 gap-6 '>
@@ -54,9 +54,9 @@ export default function ProductList() {
           {productsData && (
             <div className='col-span-12 md:col-span-10'>
               <SortProductList queryConfig={queryConfig} totalPage={productsData?.data.data.pagination.page_size} />
-              <div className='mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4'>
+              <div className='mt-6 grid grid-cols-2 gap-y-5 gap-x-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4'>
                 {productsData.data.data.products.map((product) => (
-                  <div key={product._id} className='col-span-1'>
+                  <div key={product._id} className='col-span-1 relative'>
                     <Product product={product} />
                   </div>
                 ))}

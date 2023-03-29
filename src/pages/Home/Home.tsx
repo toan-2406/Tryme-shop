@@ -44,8 +44,8 @@ export default function Home() {
   return (
     <div className='bg-gray-200'>
       <Helmet>
-        <title>Trang sản phẩm | Shopee Clone</title>
-        <meta name='description' content='Trang sản phẩm shopee Clone' />
+        <title>Trang sản phẩm | Tryme Shop</title>
+        <meta name='description' content='Trang sản phẩm Tryme Shop' />
       </Helmet>
       <Hero />
       <div className='container relative'>

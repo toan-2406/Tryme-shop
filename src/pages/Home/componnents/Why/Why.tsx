@@ -8,13 +8,13 @@ const Why = () => {
     <div className="grid content-center gap-y-2 lg:gap-y-4">
         <h2 className="font-russo text-4xl lg:text-5xl">Why Choose Our Ecommerce Store</h2>
         <p className="font-normal text-lg tracking-tight">Our e-commerce store offers a unique shopping experience that sets us apart from the competition. Here are just a few reasons why you should choose our store for all your online shopping needs.</p>
-        <ul style={{listStyleImage:`url(${icon})`}}  className="list-disc list-inside space-y-1 lg:space-x-2">
-            <li className='align-middle font-normal text-base '>Wide product selection </li>
-            <li className='align-middle font-normal text-base '>Competitive pricing</li>
-            <li className='align-middle font-normal text-base '>Quality guarantee</li>
-            <li className='align-middle font-normal text-base '>Fast shipping</li>
-            <li className='align-middle font-normal text-base '>Secure payment options</li>
-            <li className='align-middle font-normal text-base '>Exceptional customer service</li>
+        <ul style={{listStyleImage:`url(${icon})`}}  className="list-disc list-inside ">
+            <li className='font-normal text-base '>Wide product selection </li>
+            <li className='font-normal text-base '>Competitive pricing</li>
+            <li className='font-normal text-base '>Quality guarantee</li>
+            <li className='font-normal text-base '>Fast shipping</li>
+            <li className='font-normal text-base '>Secure payment options</li>
+            <li className='font-normal text-base '>Exceptional customer service</li>
         </ul>
     </div>
  </section>

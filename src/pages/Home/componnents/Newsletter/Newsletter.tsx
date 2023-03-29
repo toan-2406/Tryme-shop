@@ -11,7 +11,7 @@ const Newsletter = () => {
       <div className=' md:px-[127.5px]'>
         <div className='gap-5 flex flex-col md:flex-row'>
           <Input className='h-[48px] md:float-left md:w-2/3 ' type={'email'} placeholder='Enter your email' classNameInput='rounded-[15px] w-full h-full px-4 border-2 font-semibold text-base' />
-       <Button className='inline'>Sign up</Button>
+       <Button className='inline '>Sign up</Button>
         </div>
         <p className='text-center text-[12px] mt-2 font-normal text-[#8C8C8C]'>
           By clicking Sign Up you're confirming that you agree with our Terms and Conditions.

@@ -15,11 +15,11 @@ interface Props {
 export default function CategoryItem({ category }: Props) {
   return (
     // <Link to={`/products/${generateNameId({ name: product.name, id: product._id })}`}>
-    <div className='text-left flex flex-col justify-between durantion-100 gap-2 h-[500px] w-full shadow-md transition-transform hover:translate-y-[-0.0925rem] hover:shadow-lg'>
-      <div className="px-2 ">
+    <div className='text-left flex flex-col justify-between overflow-hidden gap-2 rounded-[10px] w-full shadow-custom '>
+      <div className="px-3 py-2">
         <div className='uppercase font-normal text-base '>{category.name}</div>
-        <h3 className="font-russo text-2xl ">{category.subname}</h3>
-        <p className="font-normal text-base">{category.slogan}</p>
+        <h3 className="font-russo text-2xl line-clamp-2 md:whitespace-nowrap">{category.subname}</h3>
+        <p className="font-normal text-base line-clamp-2">{category.slogan}</p>
       </div>
       <div className="overflow-hidden h-[300px]">
         <img

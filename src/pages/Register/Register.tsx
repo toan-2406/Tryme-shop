@@ -67,8 +67,8 @@ const Register = () => {
   return (
     <div className='bg-orange'>
       <Helmet>
-        <title>Đăng ký | Shopee Clone</title>
-        <meta name='description' content='Đăng ký tài khoản Shopee Clone' />
+        <title>Đăng ký | Tryme Shop</title>
+        <meta name='description' content='Đăng ký tài khoản Tryme Shop' />
       </Helmet>
        <div className='container '>
        <div className='grid grid-cols-1 py-4 lg:grid-cols-12 gap-4 '>

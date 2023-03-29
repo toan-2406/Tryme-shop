@@ -318,11 +318,7 @@ export default function Cart() {
               </div>
               
             </div>
-            <div className='text-right mt-2'>
-                <Button onClick={handleDeletePurchases} className='bg-red-400 hover:bg-red-500'>
-                  Cancle all
-                </Button>
-              </div>
+           
             <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-md border bg-white p-5 shadow md:flex-row md:items-center'>
               <div className='flex items-center'>
                 <div>
@@ -334,6 +330,11 @@ export default function Cart() {
                   />
                 </div>
                 <div className='mx-3 border-none bg-none text-base'>Choose all ({extendedPurchases.length})</div>
+                <div className='text-right mt-2'>
+                <Button disabled={!isAllChecked && true} onClick={handleDeletePurchases} className={`${!isAllChecked ? ' bg-zinc-500 opacity-70 hover:bg-zinc-500 ':'bg-red-400 hover:bg-red-500'}`}>
+                  Cancle all
+                </Button>
+              </div>
               </div>
 
               <div className='mt-5 flex flex-col md:ml-auto md:mt-0 md:flex-row md:items-center'>

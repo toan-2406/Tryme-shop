@@ -35,7 +35,7 @@ export default function Contact() {
       <div className='grid grid-cols-2 gap-4 md:grid-cols-12'>
         {
           socailContacts.map((item, index) => {
-            return <div className='bg-white shadow-md p-3 cols-span-6 md:col-span-3 flex flex-col gap-2 hover:translate-y-0.5 transition-transform ease-linear' >
+            return <div className='bg-white rounded-md shadow-custom  p-3 cols-span-6 md:col-span-3 flex flex-col gap-2' >
               <div dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(item.icon)
               }} />

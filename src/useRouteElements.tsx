@@ -20,7 +20,7 @@ const Login = lazy(() => import('./pages/Login'))
 const ProductList = lazy(() => import('./pages/ProductList'))
 const Homepage = lazy(() => import('./pages/Home'))
 const Contact = lazy(() => import('./pages/Contact'))
-const About = lazy(() => import('./pages/About'))
+const Sale = lazy(() => import('./pages/Sale'))
 const Profile = lazy(() => import('./pages/User/pages/Profile'))
 const Register = lazy(() => import('./pages/Register'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))
@@ -161,11 +161,11 @@ export default function useRouteElements() {
       )
     },
     {
-      path: path.about,
+      path: path.sale,
       element: (
         <MainLayout>
           <Suspense>
-            <About />
+            <Sale />
           </Suspense>
         </MainLayout>
       )

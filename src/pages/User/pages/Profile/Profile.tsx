@@ -123,7 +123,7 @@ export default function Profile() {
   }
 
   return (
-    <div className='rounded-md px-3 pb-5 shadow-lg md:px-7 md:pb-20'>
+    <div className='rounded-md px-3 pb-5 shadow-[0px_0px_4px_0px_#00000078] md:px-7 md:pb-20'>
       <div className='border-b border-b-gray-200 py-4'>
         <h2 className='text-lg font-bold capitalize text-gray-900'>My profile</h2>
         <div className='mt-1 text-sm text-gray-700'>Manage profile information for account security</div>

@@ -10,52 +10,52 @@ export const getRules = (getValues?: UseFormGetValues<any>): Rules => ({
   email: {
     required: {
       value: true,
-      message: 'Email là bắt buộc'
+      message: 'Email is required'
     },
 
     pattern: {
       value: /^\S+@\S+\.\S+$/,
-      message: 'Email không đúng định dạng'
+      message: 'Email not matching pattern'
     },
     maxLength: {
       value: 160,
-      message: 'Độ dài từ 5-160 ký tự'
+      message: 'Maximum length is 160 characters'
     },
     minLength: {
       value: 5,
-      message: 'Độ dài từ 5-160 ký tự'
+      message: 'Minimum length is 5 characters'
     }
   },
   password: {
     required: {
       value: true,
-      message: 'Password là bắt buộc'
+      message: 'Password is required'
     },
     maxLength: {
       value: 160,
-      message: 'Độ dài từ 5-160 ký tự'
+      message: 'Maximum length is 160 characters'
     },
     minLength: {
       value: 6,
-      message: 'Độ dài từ 5-160 ký tự'
+      message: 'Minimum length is 6 characters'
     }
   },
   confirm_password: {
     required: {
       value: true,
-      message: 'Nhập lại password là bắt buộc'
+      message: 'Confirm Password is enabled'
     },
     maxLength: {
       value: 160,
-      message: 'Độ dài từ 5-160 ký tự'
+      message: 'Maximum length is 160 characters'
     },
     minLength: {
       value: 6,
-      message: 'Độ dài từ 5-160 ký tự'
+      message: 'Minimum length is 6 characters'
     },
     validate:
       typeof getValues === 'function'
-        ? (value) => value === getValues('password') || 'Nhập lại password không đúng'
+        ? (value) => value === getValues('password') || 'Password is invalid'
         : undefined
   }
 })
@@ -71,21 +71,21 @@ function testPriceMinMax(this: yup.TestContext<AnyObject>) {
 export const schema = yup.object({
   email: yup
     .string()
-    .required('Email là bắt buộc ông nội')
-    .email('Email không đúng định dạng')
-    .min(5, 'Độ dài từ 5 - 160 ký tự')
-    .max(160, 'Độ dài từ 5 - 160 ký tự'),
+    .required('Email is required')
+    .email('Email must be a valid email address')
+    .min(5, 'Minimum length is 5 characters')
+    .max(160, 'Maximum length is 160 characters'),
   password: yup
     .string()
-    .required('Password là bắt buộc')
-    .min(5, 'Độ dài từ 5 - 160 ký tự')
-    .max(160, 'Độ dài từ 5 - 160 ký tự'),
+    .required('Password is required')
+    .min(5, 'Minimum length is 5 characters')
+    .max(160, 'Maximum length is 160 characters'),
   confirm_password: yup
     .string()
-    .required('Password là bắt buộc')
-    .min(5, 'Độ dài từ 5 - 160 ký tự')
-    .max(160, 'Độ dài từ 5 - 160 ký tự')
-    .oneOf([yup.ref('password')], ' Nhập lại password không đúng'),
+    .required('Repassword is required')
+    .min(5, 'Minimum length is 5 characters')
+    .max(160, 'Maximum length is 160 characters')
+    .oneOf([yup.ref('password')], 'Not a valid password'),
   price_min: yup.string().test({
     name: 'price-not-allowed',
     message: 'Price not allowed',
@@ -96,15 +96,15 @@ export const schema = yup.object({
     message: 'Price not allowed',
     test: testPriceMinMax
   }),
-  name: yup.string().trim().required('Tên sản phẩm là bắt buộc')
+  name: yup.string().trim().required('Product Name is required')
 })
 
 export const userSchema = yup.object({
-  name: yup.string().max(160, 'Độ dài tối đa là 160 ký tự'),
-  phone: yup.string().max(20, 'Độ dài tối đa là 20 ký tự'),
-  address: yup.string().max(160, 'Độ dài tối đa là 160 ký tự'),
-  avatar: yup.string().max(1000, 'Độ dài tối đa là 1000 ký tự'),
-  date_of_birth: yup.date().max(new Date(), 'Ngày không hợp lệ, vui lòng chọn ngày chính xác'),
+  name: yup.string().max(160, 'Maximum character length is 160 characters'),
+  phone: yup.string().max(20, 'Maximum character length is 20 characters'),
+  address: yup.string().max(160, 'Maximum character length is 160 characters'),
+  avatar: yup.string().max(1000, 'Maximum character length is 1000 characters'),
+  date_of_birth: yup.date().max(new Date(), 'Datetime not available, please select another date'),
   password: schema.fields['password'],
   new_password: schema.fields['password'],
   confirm_password: schema.fields['confirm_password']
