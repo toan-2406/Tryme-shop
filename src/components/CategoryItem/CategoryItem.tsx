@@ -23,6 +23,7 @@ export default function CategoryItem({ category }: Props) {
       </div>
       <div className="overflow-hidden h-[300px]">
         <img
+          loading="lazy"
           src={category.image}
           alt={category.name}
           className='bg-cover h-full '
