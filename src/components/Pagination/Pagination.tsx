@@ -6,11 +6,11 @@ import path from 'src/constants/path'
 
 interface Props {
   queryConfig: QueryConfig
-  totalPage: number
+  totalPage: number | undefined
 }
 const RANGE = 2
 
-export default function Pagination({ queryConfig, totalPage }: Props) {
+export default function Pagination({ queryConfig, totalPage = 1 }: Props) {
   const currentPage = Number(queryConfig.page)
 
   const renderPagination = () => {

@@ -5,6 +5,7 @@ import App from './App'
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'react-loading-skeleton/dist/skeleton.css'
 
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'

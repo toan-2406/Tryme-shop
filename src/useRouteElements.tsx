@@ -4,21 +4,11 @@ import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import { AppContext } from './contexts/app.context'
 import MainLayout from './layouts/MainLayout'
 import RegisterLayout from './layouts/RegisterLayout'
-// import Login from './pages/Login'
-// import ProductList from './pages/ProductList'
-// import Profile from './pages/User/pages/Profile'
-// import Register from './pages/Register'
-// import ProductDetail from './pages/ProductDetail'
-// import Cart from './pages/Cart'
 import CartLayout from './layouts/CartLayout'
 import UserLayout from './pages/User/layouts/UserLayout'
-// import ChangePassword from './pages/User/pages/ChangePassword'
-// import HistoryPurchase from './pages/User/pages/HistoryPurchase'
-// import NotFound from './pages/NotFound'
-
+import Home from './pages/Home'
+import ProductList  from './pages/ProductList'
 const Login = lazy(() => import('./pages/Login'))
-const ProductList = lazy(() => import('./pages/ProductList'))
-const Homepage = lazy(() => import('./pages/Home'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Sale = lazy(() => import('./pages/Sale'))
 const Profile = lazy(() => import('./pages/User/pages/Profile'))
@@ -122,9 +112,7 @@ export default function useRouteElements() {
       path: path.products,
       element: (
         <MainLayout>
-          <Suspense>
             <ProductList />
-          </Suspense>
         </MainLayout>
       )
     },
@@ -143,11 +131,9 @@ export default function useRouteElements() {
       path: '',
       index: true,
       element: (
-          <Suspense>
         <MainLayout>
-            <Homepage />
+          <Home/>
         </MainLayout>
-          </Suspense>
       )
     },
     {

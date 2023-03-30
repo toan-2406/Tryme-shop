@@ -1,3 +1,2 @@
-import Skeleton from './Skeleton'
-
-export default Skeleton
+export { default as ProductCardSkeleton } from './ProductCardSkeleton';
+export { default as CategoryCardSkeleton } from './CategoryCardSkeleton';

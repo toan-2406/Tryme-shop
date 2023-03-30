@@ -16,17 +16,17 @@ import ProductItem from '../ProductList/components/Product'
 import Slider from 'src/components/Slider'
 import { SwiperSlide } from 'swiper/react'
 import CategoryItem from 'src/components/CategoryItem'
-import {categoriesData} from 'src/constants/category'
-import Why from './componnents/Why'
-import Newsletter from './componnents/Newsletter'
-import Hero from './componnents/Hero'
+import { categoriesData } from 'src/constants/category'
+import Why from 'src/pages/Home/componnents/Why'
+import Newsletter from 'src/pages/Home/componnents/Newsletter'
+import Hero from 'src/pages/Home/componnents/Hero'
+import { CategoryCardSkeleton, ProductCardSkeleton } from 'src/components/Skeleton'
 
 export type QueryConfig = {
   [key in keyof ProductListConfig]: string
 }
 
 export default function Home() {
-  
   const limit = 8
   const queryConfig = useQueryConfig()
   const config = {
@@ -34,7 +34,7 @@ export default function Home() {
     sort_by: 'view',
     limit: limit
   }
-  const { data: productsData } = useQuery({
+  const { data: productsData, isLoading } = useQuery({
     queryKey: ['products', config],
     queryFn: () => {
       return productApi.getProducts(config as ProductListConfig)
@@ -42,40 +42,68 @@ export default function Home() {
     keepPreviousData: true,
     staleTime: 3 * 60 * 1000
   })
+  const products = productsData?.data.data.products
   return (
     <div className='bg-gray-200'>
       <Helmet>
         <title>Trang sản phẩm | Tryme Shop</title>
         <meta name='description' content='Trang sản phẩm Tryme Shop' />
       </Helmet>
-    <Hero/>
+      <Hero />
       <div className='container relative'>
-        <ProductSection title='Popular Products' subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit.' p='Popular' button='View all' link='/products'>
+        <ProductSection
+          title='Popular Products'
+          subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          p='Popular'
+          button='View all'
+          link='/products'
+        >
+          <Slider>
+            {isLoading
+              ? [...Array(6)].map((_, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <ProductCardSkeleton />
+                  </SwiperSlide>
+                )
+              })
+              : products?.map((item) => {
+                return (
+                  <SwiperSlide key={item._id}>
+                    <ProductItem product={item} />
+                  </SwiperSlide>
+                )
+              })}
+          </Slider>
+        </ProductSection>
+        <ProductSection
+          title='Category Products'
+          subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          p='category'
+          button='View all'
+          link='/categorys'
+        >
+          <Slider>
+            {isLoading
+              ? [...Array(6)].map((_, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <CategoryCardSkeleton />
+                  </SwiperSlide>
+                )
+              })
+              : categoriesData?.map((item, index) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <CategoryItem category={item} />
+                  </SwiperSlide>
+                )
+              })}
 
-          <Slider>
-            {productsData?.data.data.products.map((item) => {
-              return (
-                <SwiperSlide key={item._id}>
-                  <ProductItem product={item} />
-                </SwiperSlide>
-              )
-            })}
           </Slider>
         </ProductSection>
-        <ProductSection title='Category Products' subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit.' p='category' button='View all' link='/categorys'>
-          <Slider>
-            {categoriesData?.map((item,index) => {
-              return (
-                <SwiperSlide key={index}>
-                  <CategoryItem category={item} />
-                </SwiperSlide>
-              )
-            })}
-          </Slider>
-        </ProductSection>
-        {/* <ProductSection  title="Trending Products" subtitle='Lorem sdadsa' p='Treding'/> */}
-       <Why/>
-       <Newsletter/>
+        <Why />
+        <Newsletter />
       </div>
     </div>
   )

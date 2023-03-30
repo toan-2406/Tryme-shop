@@ -46,7 +46,6 @@ export default function Header() {
     queryFn: () => purchaseApi.getPurchaseList({ status: purchasesStatus.inCart }),
     enabled: isAuthenticated // chỉ gọi khi đã đăng nhập
   })
-
   const purchasesInCart = purchasesInCartData?.data.data
   const queryClient = useQueryClient()
   const logoutMutation = useMutation({
@@ -63,7 +62,6 @@ export default function Header() {
     logoutMutation.mutate()
   }
   const ref = useClickOutside(() => setIsOpen(false));
- 
   return (
     <header
       className={`fixed top-0 z-20 w-full py-4 text-white transition-all duration-100 ease-linear ${
@@ -249,6 +247,7 @@ export default function Header() {
                     className='h-full w-full rounded-full object-cover'
                   />
                 </div>
+                <div>{profile?.name}</div>
               </Popover>
             ) : (
               <div>
@@ -273,31 +272,7 @@ export default function Header() {
               </div>
             )}
           </div>
-          {/* <form className='col-span-9' onSubmit={onSubmitSearch}>
-            <div className='flex rounded-sm bg-white p-1'>
-              <input
-                type='text'
-                className='flex-grow border-none bg-transparent py-2 text-black outline-none'
-                {...register('name')}
-              />
-              <button className='flex-shrink-0 rounded-sm bg-orange py-2 px-6 hover:opacity-90'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-6 w-6'
-                >
-                  <path
-                    strokeLinecap='round'
-                    strokeLinejoin='round'
-                    d='M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z'
-                  />
-                </svg>
-              </button>
-            </div>
-          </form> */}
+         
         </div>
       </div>
     </header>

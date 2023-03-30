@@ -320,7 +320,7 @@ export default function Cart() {
             </div>
            
             <div className='sticky bottom-0 z-10 mt-8 flex flex-col rounded-md border bg-white p-5 shadow md:flex-row md:items-center'>
-              <div className='flex items-center'>
+              <div className='flex items-center flex-wrap'>
                 <div>
                   <input
                     type='checkbox'
@@ -330,8 +330,8 @@ export default function Cart() {
                   />
                 </div>
                 <div className='mx-3 border-none bg-none text-base'>Choose all ({extendedPurchases.length})</div>
-                <div className='text-right mt-2'>
-                <Button disabled={!isAllChecked && true} onClick={handleDeletePurchases} className={`${!isAllChecked ? ' bg-zinc-500 opacity-70 hover:bg-zinc-500 ':'bg-red-400 hover:bg-red-500'}`}>
+                <div className='mt-2'>
+                <Button disabled={!isAllChecked && true} onClick={handleDeletePurchases} className={`px-2 py-1 md:px-4 md:py-3 ${!isAllChecked ? ' bg-zinc-500 opacity-70 hover:bg-zinc-500 ':'bg-red-400 hover:bg-red-500'}`}>
                   Cancle all
                 </Button>
               </div>

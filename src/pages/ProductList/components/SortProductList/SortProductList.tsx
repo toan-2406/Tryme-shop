@@ -8,10 +8,9 @@ import path from 'src/constants/path'
 import omit from 'lodash/omit'
 interface Props {
   queryConfig: QueryConfig
-  totalPage: number
 }
 
-export default function SortProductList({ queryConfig, totalPage }: Props) {
+export default function SortProductList({ queryConfig}: Props) {
   const currentPage = Number(queryConfig.page)
   const { sort_by = sortBy.createdAt, order } = queryConfig
   const navigate = useNavigate()
@@ -48,7 +47,6 @@ export default function SortProductList({ queryConfig, totalPage }: Props) {
 
   return (
     <div className='bg-gray-300/40 py-4 px-3 '>
-      <div className=''>
         <div className='text-center md:text-left text-base font-bold capitalize'>Sort by</div>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-2'>
           <button
@@ -111,88 +109,6 @@ export default function SortProductList({ queryConfig, totalPage }: Props) {
             </div>
           </div>
         </div>
-        <div className='mt-2 flex items-center justify-end'>
-          <div>
-            <span className='text-orange'>{currentPage}</span>
-            <span>/{totalPage}</span>
-          </div>
-          <div className='ml-2 flex'>
-            {currentPage === 1 ? (
-              <span className='flex h-8 w-9 cursor-not-allowed items-center justify-center rounded-tl-sm rounded-bl-sm bg-white/60  shadow hover:bg-slate-100'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-3 w-3'
-                >
-                  <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' />
-                </svg>
-              </span>
-            ) : (
-              <Link
-                to={{
-                  pathname: path.products,
-                  search: createSearchParams({
-                    ...queryConfig,
-                    page: (currentPage - 1).toString()
-                  }).toString()
-                }}
-                className='flex h-8 w-9  items-center justify-center rounded-tl-sm rounded-bl-sm bg-white/60  shadow hover:bg-slate-100'
-              >
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-3 w-3'
-                >
-                  <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' />
-                </svg>
-              </Link>
-            )}
-
-            {currentPage === totalPage ? (
-              <span className='flex h-8 w-9 cursor-not-allowed items-center justify-center rounded-tl-sm rounded-bl-sm bg-white/60  shadow hover:bg-slate-100'>
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-3 w-3'
-                >
-                  <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
-                </svg>
-              </span>
-            ) : (
-              <Link
-                to={{
-                  pathname: path.products,
-                  search: createSearchParams({
-                    ...queryConfig,
-                    page: (currentPage + 1).toString()
-                  }).toString()
-                }}
-                className='flex h-8 w-9  items-center justify-center rounded-tl-sm rounded-bl-sm bg-white/60  shadow hover:bg-slate-100'
-              >
-                <svg
-                  xmlns='http://www.w3.org/2000/svg'
-                  fill='none'
-                  viewBox='0 0 24 24'
-                  strokeWidth={1.5}
-                  stroke='currentColor'
-                  className='h-3 w-3'
-                >
-                  <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
-                </svg>
-              </Link>
-            )}
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

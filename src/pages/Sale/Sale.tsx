@@ -7,15 +7,19 @@ import { formatCurrency, generateNameId } from 'src/utils/utils'
 import path from 'src/constants/path'
 import Input from 'src/components/Input'
 import useSearchProducts from 'src/hooks/useSearchProducts'
+import { getAccessTokenFromLS } from 'src/utils/auth'
 export default function Sale() {
   const { onSubmitSearch, register } = useSearchProducts()
   const { data: historyPurchaseList, refetch } = useQuery({
     queryKey: ['purchases', { status: purchasesStatus.all }],
-    queryFn: () => purchaseApi.getPurchaseList({ status: purchasesStatus.all })
+    queryFn: () => {
+      if (!getAccessTokenFromLS()) return
+      return purchaseApi.getPurchaseList({ status: purchasesStatus.all })
+    }
   })
   const list = historyPurchaseList?.data.data
- 
+
   return (
-   <>Sale</>
+    <>Sale</>
   )
 }

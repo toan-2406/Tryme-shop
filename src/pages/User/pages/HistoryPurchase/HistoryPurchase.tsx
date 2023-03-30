@@ -5,32 +5,13 @@ import Button from 'src/components/Button'
 import { purchasesStatus } from 'src/constants/purchase'
 import { formatCurrency, generateNameId } from 'src/utils/utils'
 import path from 'src/constants/path'
-import Input from 'src/components/Input'
-import useSearchProducts from 'src/hooks/useSearchProducts'
-import { useContext, useMemo } from 'react'
-import { AppContext } from 'src/contexts/app.context'
+import InfiniteScroll from 'react-infinite-scroll-component'
 export default function HistoryPurchase() {
-  const { extendedPurchases, setExtendedPurchases } = useContext(AppContext)
-  const { onSubmitSearch, register } = useSearchProducts()
-  const { data: historyPurchaseList, refetch } = useQuery({
+  const { data: historyPurchaseList } = useQuery({
     queryKey: ['purchases', { status: purchasesStatus.all }],
     queryFn: () => purchaseApi.getPurchaseList({ status: purchasesStatus.all })
   })
   const list = historyPurchaseList?.data.data
-
-  const isAllChecked = useMemo(
-    () => extendedPurchases.every((purchase) => purchase.checked === true),
-    [extendedPurchases]
-  )
-
-  const handleCheckAll = () => {
-    setExtendedPurchases((prev) =>
-      prev.map((purchase) => ({
-        ...purchase,
-        checked: !isAllChecked
-      }))
-    )
-  }
   const renderStatus = (status: number) => {
     let state = '';
     let bgColor = '';
@@ -77,26 +58,13 @@ export default function HistoryPurchase() {
           <h2 className='text-gray-900 text-lg font-bold capitalize'>History Order Buy</h2>
           <div className='text-gray-700 mt-1 text-sm'>Manage order buy information</div>
         </div>
-        <div className='col-span-4'></div>
-        <div className='col-span-4 '>
-          <form onSubmit={onSubmitSearch}>
-            <input
-              type='text'
-              placeholder='Search oder buy'
-              className='text-gray-700 w-full rounded-md border px-4 py-2 focus:outline-none'
-              {...register('name')}
-            />
-          </form>
-        </div>
       </div>
       <div>
         <div className='overflow-x-auto'>
           <div className='min-w-[1000px]'>
             <div className='text-gray-500 text-md grid grid-cols-12 rounded-md bg-white py-5 px-9 capitalize shadow'>
               <div className='col-span-5 font-semibold'>
-
                 Name & Image
-
               </div>
               <div className='col-span-7'>
                 <div className='grid grid-cols-5 text-center'>
@@ -107,64 +75,67 @@ export default function HistoryPurchase() {
                 </div>
               </div>
             </div>
-
-            <div className='my-3 rounded-md bg-white p-5 shadow'>
-              {list?.map((item) => {
-                return (
-                  <div
-                    key={item._id}
-                    className='mb-5 grid grid-cols-12 items-center border-b bg-white py-5 px-2 first:mt-0'
-                  >
-                    <div className='col-span-5'>
-                      <div className='flex'>
-                        <div className='flex-grow'>
-                          <div className='flex'>
-                            <Link
-                              className='h-20 w-20 flex-shrink-0'
-                              to={`${path.products}/${generateNameId({
-                                name: item.product.name,
-                                id: item.product._id
-                              })}`}
-                            >
-                              <img src={item.product.image} alt={item.product.name} />
-                            </Link>
-                            <div className='flex-grow px-2 pt-1 pb-2'>
+            {/* <InfiniteScroll next={} hasMore={false} children={undefined} loader={undefined} dataLength={0}
+            > */}
+              <div className='my-3 rounded-md bg-white p-5 shadow'>
+                {list?.map((item) => {
+                  return (
+                    <div
+                      key={item._id}
+                      className='mb-5 grid grid-cols-12 items-center border-b bg-white py-5 px-2 first:mt-0'
+                    >
+                      <div className='col-span-5'>
+                        <div className='flex'>
+                          <div className='flex-grow'>
+                            <div className='flex'>
                               <Link
-                                to={`${path.products}${generateNameId({
+                                className='h-20 w-20 flex-shrink-0'
+                                to={`${path.products}/${generateNameId({
                                   name: item.product.name,
                                   id: item.product._id
                                 })}`}
-                                className='text-md text-left font-medium line-clamp-2 '
                               >
-                                {item.product.name}
+                                <img src={item.product.image} alt={item.product.name} />
                               </Link>
+                              <div className='flex-grow px-2 pt-1 pb-2'>
+                                <Link
+                                  to={`${path.products}${generateNameId({
+                                    name: item.product.name,
+                                    id: item.product._id
+                                  })}`}
+                                  className='text-md text-left font-medium line-clamp-2 '
+                                >
+                                  {item.product.name}
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className='col-span-7'>
-                      <div className='grid grid-cols-5 items-center'>
-                        <div className='col-span-1'>
-                          <div className='flex flex-col items-center justify-center '>
-                            <span className='ml-3 text-base font-medium '> ₫{formatCurrency(item.product.price)}</span>
+                      <div className='col-span-7'>
+                        <div className='grid grid-cols-5 items-center'>
+                          <div className='col-span-1'>
+                            <div className='flex flex-col items-center justify-center '>
+                              <span className='ml-3 text-base font-medium '> ₫{formatCurrency(item.product.price)}</span>
+                            </div>
                           </div>
-                        </div>
-                        <div className='col-span-1 flex items-center justify-center'>{item.buy_count}</div>
-                        <div className='col-span-1'>
-                          <span className='font-semibold text-base text-orange'>
-                            ₫{formatCurrency(item.product.price * item.buy_count)}
-                          </span>
-                        </div>
-                        <div className='col-span-1'>
-                          <div>{renderStatus(item.status)}</div>
+                          <div className='col-span-1 flex items-center justify-center'>{item.buy_count}</div>
+                          <div className='col-span-1'>
+                            <span className='font-semibold text-base text-orange'>
+                              ₫{formatCurrency(item.product.price * item.buy_count)}
+                            </span>
+                          </div>
+                          <div className='col-span-1'>
+                            <div>{renderStatus(item.status)}</div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )
-              })}
-            </div>
+                  )
+                })}
+              </div>
+            {/* </InfiniteScroll> */}
+
           </div>
         </div>
       </div>

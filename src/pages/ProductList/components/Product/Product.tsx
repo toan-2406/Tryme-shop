@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import React from 'react'
+import React, { useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import purchaseApi from 'src/apis/purchase.api'
@@ -18,6 +19,7 @@ interface CartData {
   buy_count: number
 }
 export default function Product({ product }: Props) {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const queryClient = useQueryClient()
   const addToCartMutation = useMutation({
     mutationFn: (body: CartData) => purchaseApi.addToCart(body)
@@ -40,12 +42,12 @@ export default function Product({ product }: Props) {
   }
   return (
     <>
-      <div className='shadow-custom z-0 rounded-[10px] p-2 text-left md:p-4'>
+      <div className='shadow-custom z-0 rounded-[10px] p-2 text-left md:p-4 max-h-[472px]'>
         <span className='absolute top-0 right-0 -translate-y-1/2 transform rounded-md bg-red-600 py-1 px-2 font-bold text-white'>
           Sale {rateStale(product.price_before_discount, product.price)}
         </span>
-        <div className=' max-h-[284px] overflow-hidden rounded-[10px]'>
-          <img loading="lazy" src={product.image} alt={product.name} className='h-full bg-cover ' />
+        <div className='overflow-hidden rounded-[10px] max-h-[280px] h-full'>
+          <img loading="lazy" src={product.image} alt={product.name} className='bg-contain  h-full' />
         </div>
         <Link to={`/products/${generateNameId({ name: product.name, id: product._id })}`}>
           <div className='mt-4'>
