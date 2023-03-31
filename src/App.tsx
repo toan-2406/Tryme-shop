@@ -13,12 +13,11 @@ function App() {
 
   useEffect(() => {
     localEventTarget.addEventListener('clearLS', reset)
-
+ 
     return () => {
       localEventTarget.removeEventListener('clearLS', reset)
     }
   }, [reset])
-
   return (
     // Thư viện position : floating - ui
     // Thư viện animation : framer motion

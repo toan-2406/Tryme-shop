@@ -21,7 +21,7 @@ export default function ProductSection({
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
         <p className="font-normal text-lg mb-1 md:mb-0">{subtitle} </p>
         {button && <Link to={`${link}`}>
-          <Button>{button}</Button></Link>}
+        <Button>{button}</Button></Link>}
       </div>
       <div >
         {children}

@@ -19,7 +19,7 @@ export default function Input({
   name,
   register,
   rules,
-  classNameInput = 'px-4 w-full py-2 border rounded-md text-gray-700 focus:outline-none',
+  classNameInput = 'px-4 border w-full py-2 rounded-md text-gray-700 focus:outline-none',
   classNameError = 'mt-1 text-red-600 min-h-[1rem] text-sm',
   ...rest
 }: Props) {

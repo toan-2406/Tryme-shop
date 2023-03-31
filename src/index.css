@@ -3,16 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .item {
-    @apply block w-full font-medium py-2 px-3 bg-[#e1e0da] hover:bg-slate-100 hover:text-orange;
+    @apply block w-full bg-[#e1e0da] py-2 px-3 font-medium hover:bg-slate-100 hover:text-orange;
   }
-  .line-hr{
-    @apply my-2 h-[1px] bg-gray opacity-50
+  .line-hr {
+    @apply my-2 h-[1px] bg-gray opacity-50;
   }
   .shadow-custom {
-    @apply shadow-[0px_0px_4px_0px_#00000078] hover:shadow-[-2px_2px_3px_2px_#00000078] hover:translate-y-[-5px] hover:translate-x-1 tracking-tighter transition-all ease-linear duration-200
+    @apply tracking-tighter shadow-[0px_0px_4px_0px_#00000078] transition-all duration-200 ease-linear lg:hover:translate-y-[-5px] lg:hover:translate-x-1 lg:hover:shadow-[-2px_2px_3px_2px_#00000078];
   }
 }
 
@@ -20,32 +19,38 @@ html {
   height: 100%;
   line-height: 1.2;
 }
-body{
+body {
   font-family: 'Quicksand', sans-serif;
   color: #252525;
   background-color: #ffffff;
 }
-.font-russo{
+.font-russo {
   font-family: 'Russo One', sans-serif;
   font-weight: 400;
+}
+.font-frank {
+  font-family: 'Frank Ruhl Libre', serif;
 
 }
-
-.swiper {
+.ProductSlider.swiper {
   width: 100%;
   height: 100%;
   padding: 40px 2px;
 }
-
+.BannerSlider.swiper {
+  padding: 0;
+}
+.BannerSlider.swiper .swiper-button-next,
+  .BannerSlider.swiper .swiper-button-prev {
+    display: none;
+  }
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
   /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .swiper-slide img {
@@ -55,11 +60,12 @@ body{
   object-fit: cover;
 }
 @media (max-width: 768px) {
-  .swiper-button-next,.swiper-button-prev{
+  .ProductSlider.swiper .swiper-button-next,
+  .ProductSlider.swiper .swiper-button-prev {
     display: none;
   }
 }
-.swiper-button-next{
+.swiper-button-next {
   border-radius: 50%;
   background-color: #fff;
   box-shadow: 0px 0px 1px 2px #2525255b;
@@ -68,15 +74,15 @@ body{
   transition: shadow 0.3s ease;
   right: 10px;
 }
-.swiper-button-next:hover{
+.swiper-button-next:hover {
   box-shadow: 0px 0px 4px 2px #2525255b;
 }
-.swiper-button-next::after{
+.swiper-button-next::after {
   font-weight: 600;
   color: black;
   font-size: 24px;
 }
-.swiper-button-prev{
+.swiper-button-prev {
   border-radius: 50%;
   background-color: #fff;
   box-shadow: 0px 0px 1px 2px #2525255b;
@@ -85,14 +91,14 @@ body{
   transition: shadow 0.3s ease;
   left: 10px;
 }
-.swiper-button-prev:hover{
+.swiper-button-prev:hover {
   box-shadow: 0px 0px 4px 2px #2525255b;
 }
-.swiper-button-prev::after{
+.swiper-button-prev::after {
   font-weight: 600;
   color: black;
   font-size: 24px;
 }
-.swiper-pagination-bullet-active{
-  background-color: #F47726;
+.swiper-pagination-bullet-active {
+  background-color: #f47726;
 }

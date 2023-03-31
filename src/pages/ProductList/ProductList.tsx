@@ -46,6 +46,7 @@ export default function ProductList() {
   })
   const loadProducts = () => {
     setLimit(limit + 8)
+    console.log(limit)
   }
   return (
     <div className='bg-gray-200'>
@@ -57,25 +58,29 @@ export default function ProductList() {
         <div className='grid grid-cols-12 gap-6 '>
           <AsideFilter queryConfig={queryConfig} categories={categoriesData?.data.data || []} />
           {productsData && (
-            <div className='col-span-12 md:col-span-10'>
+            <div className='col-span-12 lg:col-span-10'>
               <SortProductList queryConfig={queryConfig} />
               {
                 productsData.data.data.products && <InfiniteScroll
                   dataLength={productsData.data.data.products.length}
                   next={() => loadProducts()}
-                  hasMore={true}
-                  loader={page < Math.ceil(pageNumber/ 8) ? <h4>Loading...</h4> : <></>}
+                  hasMore={limit < 40 ? true : false}
+                  loader={<></>}
                 >
-                  <div className='mt-6 grid grid-cols-2 gap-y-5 gap-x-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4'>
+                  <div className='my-4 mx-2 grid grid-cols-2 gap-y-5 gap-x-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4'>
 
-                    {productsData.data.data.products.map((product) => (
+                    {productsData.data.data.products.slice(0, limit).map((product) => (
                       <div key={product._id} className='col-span-1 relative'>
                         <ProductItem product={product} />
                       </div>
                     ))}
                   </div>
-                </InfiniteScroll>
+                
+              </InfiniteScroll>
               }
+              
+              
+
             </div>
           )}
         </div>

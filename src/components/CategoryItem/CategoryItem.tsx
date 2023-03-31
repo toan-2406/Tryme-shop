@@ -5,7 +5,8 @@ interface Category {
   name: string,
   subname: string,
   image: string,
-  slogan: string
+  slogan: string,
+  link:string
 }
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
 
 export default function CategoryItem({ category }: Props) {
   return (
-    // <Link to={`/products/${generateNameId({ name: product.name, id: product._id })}`}>
+    <Link to={`/products?category=${category.link}`}>
     <div className='text-left flex flex-col justify-between overflow-hidden gap-2 rounded-[10px] w-full shadow-custom '>
       <div className="px-3 py-2">
         <div className='uppercase font-normal text-base '>{category.name}</div>
@@ -30,6 +31,6 @@ export default function CategoryItem({ category }: Props) {
         />
       </div>
     </div>
-    // </Link>
+  </Link>
   )
 }

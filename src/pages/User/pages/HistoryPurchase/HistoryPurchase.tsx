@@ -54,7 +54,7 @@ export default function HistoryPurchase() {
   return (
     <div className='rounded-md px-3 pb-5 shadow-[0px_0px_4px_0px_#00000078] ' >
       <div className='border-b-gray-200 grid grid-cols-12 border-b py-4'>
-        <div className='col-span-4'>
+        <div className='col-span-12'>
           <h2 className='text-gray-900 text-lg font-bold capitalize'>History Order Buy</h2>
           <div className='text-gray-700 mt-1 text-sm'>Manage order buy information</div>
         </div>

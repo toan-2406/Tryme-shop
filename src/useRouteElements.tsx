@@ -8,9 +8,9 @@ import CartLayout from './layouts/CartLayout'
 import UserLayout from './pages/User/layouts/UserLayout'
 import Home from './pages/Home'
 import ProductList  from './pages/ProductList'
+import Sale from './pages/Sale'
 const Login = lazy(() => import('./pages/Login'))
 const Contact = lazy(() => import('./pages/Contact'))
-const Sale = lazy(() => import('./pages/Sale'))
 const Profile = lazy(() => import('./pages/User/pages/Profile'))
 const Register = lazy(() => import('./pages/Register'))
 const ProductDetail = lazy(() => import('./pages/ProductDetail'))

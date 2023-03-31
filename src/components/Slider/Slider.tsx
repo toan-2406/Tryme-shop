@@ -11,6 +11,7 @@ interface Props {
         <>
         <Swiper
           slidesPerView={1}
+          spaceBetween={20}
           pagination={{
             clickable: true
           }}
@@ -30,9 +31,10 @@ interface Props {
             }
            }
           }
+          autoplay={true}
           navigation={true}
           modules={[ Pagination, Navigation]}
-          className="mySwiper"
+          className="ProductSlider"
         >
            
             {children}
