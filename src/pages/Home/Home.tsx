@@ -21,6 +21,7 @@ import Why from 'src/pages/Home/componnents/Why'
 import Newsletter from 'src/pages/Home/componnents/Newsletter'
 import Hero from 'src/pages/Home/componnents/Hero'
 import { CategoryCardSkeleton, ProductCardSkeleton } from 'src/components/Skeleton'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 
 export type QueryConfig = {
   [key in keyof ProductListConfig]: string
@@ -44,11 +45,7 @@ export default function Home() {
   })
   const products = productsData?.data.data.products
   return (
-    <div className='bg-gray-200'>
-      <Helmet>
-        <title>Trang sản phẩm | Tryme Shop</title>
-        <meta name='description' content='Trang sản phẩm Tryme Shop' />
-      </Helmet>
+    <HelmetWrapper title='Home Page' content='Home Page of Tryme Shop'>
       <Hero />
       <div className='container relative'>
         <ProductSection
@@ -105,6 +102,6 @@ export default function Home() {
         <Why />
         <Newsletter />
       </div>
-    </div>
+    </HelmetWrapper>
   )
 }

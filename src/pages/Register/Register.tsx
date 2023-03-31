@@ -16,6 +16,7 @@ import { AppContext } from 'src/contexts/app.context'
 import Button from 'src/components/Button'
 import { setProfileToLS } from 'src/utils/auth'
 import { Helmet } from 'react-helmet-async'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 
 type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
@@ -65,18 +66,15 @@ const Register = () => {
   })
 
   return (
-    <div className='bg-orange'>
-      <Helmet>
-        <title>Đăng ký | Tryme Shop</title>
-        <meta name='description' content='Đăng ký tài khoản Tryme Shop' />
-      </Helmet>
-       <div className='container '>
-       <div className='grid grid-cols-1 py-4 lg:grid-cols-12 gap-4 '>
-          <div className='col-span-12 md:col-span-7 hidden md:block'>
-            <img loading="lazy" src={image} alt="imgae" className='bg-contain'/>
+    <HelmetWrapper title='Register Page' content='Register Page of Tryme Shop'>
+      <div className="bg-orange h-full">
+      <div className='container '>
+        <div className='grid grid-cols-1 py-4 lg:grid-cols-2 gap-4 '>
+          <div className='hidden md:block'>
+            <img loading="lazy" src={image} alt="imgae" className='max-h-[578px] bg-cover' />
           </div>
-          <div className='lg:col-span-5 grid content-center'>
-            <form onSubmit={onSubmit} className='rounded-md bg-white px-5 py-10 md:px-10 shadow-sm'>
+          <div className='flex items-center justify-center'>
+          <form onSubmit={onSubmit} className='rounded-md bg-white px-5 py-10 w-3/4 md:px-10 shadow-sm'>
               <div className='font-semibold text-2xl'>Đăng ký</div>
               <Input
                 name='email'
@@ -123,7 +121,8 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </HelmetWrapper>
   )
 }
 

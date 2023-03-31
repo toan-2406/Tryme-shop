@@ -18,6 +18,7 @@ import { Helmet } from 'react-helmet-async'
 import { convert } from 'html-to-text'
 import Slider from 'src/components/Slider'
 import { SwiperSlide } from 'swiper/react'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 interface CartData {
   product_id: string
   buy_count: number
@@ -131,22 +132,11 @@ export default function ProductDetail() {
 
   if (!product) return null
   return (
-    <div className='bg-gray-200 '>
-      <Helmet>
-        <title>{product.name} | Tryme Shop</title>
-        <meta
-          name='description'
-          content={convert(product.description, {
-            limits: {
-              maxInputLength: 150
-            }
-          })}
-        />
-      </Helmet>
+    <HelmetWrapper title='ProductDetail Page' content='ProductDetail of Tryme Shop'>
       <div className='container pt-20'>
         <div className='bg-white p-4 '>
-          <div className='grid grid-cols-1 gap-10 md:grid-cols-12 lg:gap-20'>
-            <div className='md:col-span-5'>
+          <div className='grid grid-cols-1 md:gap-10 md:grid-cols-12 lg:gap-20'>
+            <div className='col-span-12 md:col-span-5 '>
               <div
                 className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] '
                 onMouseMove={handleZoom}
@@ -205,7 +195,7 @@ export default function ProductDetail() {
                 </button>
               </div>
             </div>
-            <div className='md:col-span-7'>
+            <div className='col-span-12 md:col-span-7'>
               <h1 className='text-2xl font-bold capitalize md:text-4xl'>{product.name}</h1>
               <div className=' mt-2 flex gap-3'>
                 <div className='text-gray-500 text-2xl font-medium line-through'>
@@ -259,11 +249,12 @@ export default function ProductDetail() {
               </button>
               <p className='mt-3 text-center text-[12px] font-normal'>Free shipping over $50</p>
 
-              <div className='mt-4'>
-                <div className='mt-4'>
-                  <div className=' bg-white p-4 '>
+             
+            </div>
+            <div className=' col-span-12'>
+                  <div className=' bg-white  '>
                     <div className='text-lg font-bold '>Description</div>
-                    <div className='mt-4 mb-4 text-base tracking-[.0010em]'>
+                    <div className='mt-2 mb-4 text-base tracking-[.0010em]'>
                       <div
                         dangerouslySetInnerHTML={{
                           __html: DOMPurify.sanitize(product.description)
@@ -272,8 +263,6 @@ export default function ProductDetail() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -295,6 +284,6 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
-    </div>
+    </HelmetWrapper>
   )
 }

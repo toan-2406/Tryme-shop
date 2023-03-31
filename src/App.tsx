@@ -18,6 +18,7 @@ function App() {
       localEventTarget.removeEventListener('clearLS', reset)
     }
   }, [reset])
+
   return (
     // Thư viện position : floating - ui
     // Thư viện animation : framer motion

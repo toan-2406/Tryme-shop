@@ -68,7 +68,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
   const ref = useClickOutside(() => setIsActiveFilter(false));
   return (
     <div
-      className={`fixed top-0 left-0 z-20 col-span-2 w-3/4 bg-white px-4 lg:relative lg:z-0 lg:w-full lg:translate-x-0 lg:px-0 ${isActiveFilter ? 'translate-x-0' : 'translate-x-[-100%]'
+      className={`fixed top-0 left-0 z-50 h-screen col-span-2 w-3/4 bg-white px-4 lg:relative lg:z-0 lg:w-full lg:translate-x-0 lg:px-0 ${isActiveFilter ? 'translate-x-0' : 'translate-x-[-100%]'
         } transition-all duration-150 ease-linear`}
     >
       <div

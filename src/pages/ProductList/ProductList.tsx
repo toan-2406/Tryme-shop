@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet-async'
 import { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { getAccessTokenFromLS } from 'src/utils/auth'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 export type QueryConfig = {
   [key in keyof ProductListConfig]: string
 }
@@ -49,11 +50,7 @@ export default function ProductList() {
     console.log(limit)
   }
   return (
-    <div className='bg-gray-200'>
-      <Helmet>
-        <title>Trang sản phẩm | Tryme Shop</title>
-        <meta name='description' content='Trang sản phẩm Tryme Shop' />
-      </Helmet>
+    <HelmetWrapper title='Products Page' content='Products Page of Tryme Shop'>
       <div className='container relative pt-20'>
         <div className='grid grid-cols-12 gap-6 '>
           <AsideFilter queryConfig={queryConfig} categories={categoriesData?.data.data || []} />
@@ -67,7 +64,7 @@ export default function ProductList() {
                   hasMore={limit < 40 ? true : false}
                   loader={<></>}
                 >
-                  <div className='my-4 mx-2 grid grid-cols-2 gap-y-5 gap-x-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4'>
+                  <div className='my-4 mx-1 grid grid-cols-2 gap-y-5 gap-x-4 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4'>
 
                     {productsData.data.data.products.slice(0, limit).map((product) => (
                       <div key={product._id} className='col-span-1 relative'>
@@ -85,6 +82,6 @@ export default function ProductList() {
           )}
         </div>
       </div>
-    </div>
+    </HelmetWrapper>
   )
 }

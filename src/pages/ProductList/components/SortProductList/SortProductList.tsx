@@ -46,7 +46,7 @@ export default function SortProductList({ queryConfig}: Props) {
   }
 
   return (
-    <div className='bg-gray-300/40 py-4 px-3 '>
+    <div className='bg-gray-300/40 py-4 md:px-3 '>
         <div className='text-center md:text-left text-base font-bold capitalize'>Sort by</div>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-2'>
           <button

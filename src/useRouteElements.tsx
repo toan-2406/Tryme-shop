@@ -1,5 +1,5 @@
 import path from 'src/constants/path'
-import { useContext, lazy, Suspense } from 'react'
+import { useContext, lazy, Suspense, useEffect } from 'react'
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import { AppContext } from './contexts/app.context'
 import MainLayout from './layouts/MainLayout'

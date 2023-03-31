@@ -23,6 +23,7 @@ body {
   font-family: 'Quicksand', sans-serif;
   color: #252525;
   background-color: #ffffff;
+  scroll-behavior: smooth;
 }
 .font-russo {
   font-family: 'Russo One', sans-serif;

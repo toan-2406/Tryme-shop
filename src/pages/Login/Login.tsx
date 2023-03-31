@@ -13,6 +13,7 @@ import { setProfileToLS } from 'src/utils/auth'
 import authApi from 'src/apis/auth.api'
 import { Helmet } from 'react-helmet-async'
 import image from 'src/assets/images/screenauth.png'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 type FormData = Pick<Schema, 'email' | 'password'>
 const loginSchema = schema.pick(['email', 'password'])
 
@@ -60,18 +61,17 @@ const Login = () => {
   })
 
   return (
-    <div className='bg-orange '>
-      <Helmet>
-        <title>Đăng nhập | Tryme Shop</title>
-        <meta name='description' content='Đăng nhập vào dự án Tryme Shop' />
-      </Helmet>
-      <div className='container '>
-        <div className='grid grid-cols-1 py-4 lg:grid-cols-12 gap-4 '>
-          <div className='col-span-12 md:col-span-7 hidden md:block'>
-            <img loading="lazy" src={image} alt="imgae" className='bg-contain'/>
+    <HelmetWrapper title='Login Page' content='Login Page of Tryme Shop'>
+    <div className="bg-orange h-[calc(100vh - 102px)]">
+    <div className='container '>
+        <div className='grid grid-cols-1 py-4 lg:grid-cols-2 gap-4'>
+          <div className=' hidden md:block'>
+            <div>
+            <img loading="lazy" src={image} alt="imgae" className='max-h-[578px] bg-cover'/>
+            </div>
           </div>
-          <div className='lg:col-span-5 col-span-12 grid content-center'>
-            <form onSubmit={onSubmit} className='rounded-md bg-white px-5 py-10 md:px-10 shadow-sm' noValidate>
+          <div className='flex items-center justify-center'>
+            <form onSubmit={onSubmit} className='rounded-md bg-white px-5 py-10 w-3/4 md:px-10 shadow-sm' noValidate>
               <div className='text-2xl font-semibold'>Đăng nhập</div>
               <Input
                 name='email'
@@ -112,6 +112,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </HelmetWrapper>
   )
 }
 

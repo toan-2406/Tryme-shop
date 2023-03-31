@@ -13,6 +13,7 @@ import keyBy from 'lodash/keyBy'
 import { toast } from 'react-toastify'
 import { AppContext } from 'src/contexts/app.context'
 import noProduct from '../../assets/images/no-product.png'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 
 export default function Cart() {
   // const { extendedPurchases, setExtendedPurchases } = useContext(AppContext)
@@ -157,7 +158,8 @@ export default function Cart() {
   }
 
   return (
-    <div className='bg-neutral-100 py-16'>
+    <HelmetWrapper title='Cart Page' content='Cart Page of Tryme Shop'>
+      <div className='bg-neutral-100 py-16'>
       <div className='container'>
         {extendedPurchases.length > 0 ? (
           <>
@@ -360,7 +362,7 @@ export default function Cart() {
           </>
         ) : (
           <div className='text-center'>
-            <img src={noProduct} alt='no purchase' className='mx-auto ' />
+            <img src={noProduct} alt='no purchase' className='mx-auto max-h-[200px]' />
             <div className='text-gray-400 mt-5 font-bold'>Your cart empty</div>
             <div className='mt-5 text-center'>
               <Link
@@ -375,5 +377,6 @@ export default function Cart() {
         )}
       </div>
     </div>
+    </HelmetWrapper>
   )
 }

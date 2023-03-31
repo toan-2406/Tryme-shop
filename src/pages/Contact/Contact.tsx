@@ -4,9 +4,11 @@ import image from 'src/assets/images/screencontact.png'
 import { socailContacts } from 'src/constants/fakedata'
 import DOMPurify from 'dompurify'
 import { Link } from 'react-router-dom'
+import HelmetWrapper from 'src/components/HelmetWrapper'
 export default function Contact() {
   return (
-    <div className='container pt-24 pb-4'>
+    <HelmetWrapper title='Contact Page' content='Contact Page of Tryme Shop'>
+ <div className='container pt-24 pb-4'>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-12'>
         <div className='md:col-span-6'>
           <h1 className='font-russo text-4xl'>Contact us</h1>
@@ -40,7 +42,7 @@ export default function Contact() {
                 __html: DOMPurify.sanitize(item.icon)
               }} />
               <h3 className='font-bold text-2xl'>{item.name}</h3>
-              <Link to={item.href} className="text-base underline ">
+              <Link to={item.href} className="text-base underline break-words">
                 {item.linkname}
               </Link>
             </div>
@@ -48,5 +50,7 @@ export default function Contact() {
         }
       </div>
     </div>
+    </HelmetWrapper>
+   
   )
 }
