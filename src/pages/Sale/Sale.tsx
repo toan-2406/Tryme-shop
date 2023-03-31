@@ -36,7 +36,7 @@ export default function Sale() {
   console.log(realIndex)
   const swiperRef = useRef<SwiperType>();
   return (
-    <div className='relative  pt-24 md:max-h-[600px] lg:h-screen xl:max-h-[900px]'>
+    <div className='relative pt-16 md:pt-24 md:max-h-[600px] lg:h-screen xl:max-h-[900px]'>
       <div className='container h-full'>
         <div className='grid grid-cols-1 md:grid-cols-2 '>
           <div className='md:flex md:flex-col md:items-start md:justify-center gap-2 relative'>
