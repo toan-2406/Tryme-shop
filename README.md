@@ -12,7 +12,15 @@ The website has the following main features:
 - **Add to Cart:** Users can add products to their cart by clicking the "Add to Cart" button on the product detail page.
 - **Update Profile:** Users can update their profile information, such as their email address, username, and password.
 - **Purchase History:** Users can view their purchase history, including order details and order status.
+## Compatibility
 
+The website is designed to be responsive and compatible with various devices, including desktops, laptops, tablets, and smartphones. The layout and content are optimized to provide a seamless experience across different screen sizes and resolutions.
+
+## SEO Friendly 
+[Link pageSpeed](https://pagespeed.web.dev/analysis/https-tryme-shop-vercel-app/ce8ciyfwnl?hl=vi&form_factor=desktop)
+
+The website is optimized for search engines to help improve its visibility and ranking in search results. The website's pages are structured using proper HTML tags and optimized with relevant keywords, meta descriptions, and titles. Additionally, the website has a sitemap and uses clean URLs to make it easier for search engines to crawl and index the site's content.
+![image](https://user-images.githubusercontent.com/57821796/229274022-c4a83db7-8ae3-46dc-bd98-d57a1af429ff.png)
 ## Usage
 
 To use the website, follow these steps:
