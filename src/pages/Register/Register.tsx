@@ -17,6 +17,7 @@ import Button from 'src/components/Button'
 import { setProfileToLS } from 'src/utils/auth'
 import { Helmet } from 'react-helmet-async'
 import HelmetWrapper from 'src/components/HelmetWrapper'
+import path from 'src/constants/path'
 
 type FormData = Pick<Schema, 'email' | 'password' | 'confirm_password'>
 const registerSchema = schema.pick(['email', 'password', 'confirm_password'])
@@ -113,7 +114,7 @@ const Register = () => {
               </Button>
               <div className='mt-8 flex items-center justify-center'>
                 <span className='text-gray-400'>Bạn đã có tài khoản ?</span>
-                <Link className='ml-1 text-red-400 font-bold' to='/login'>
+                <Link className='ml-1 text-red-400 font-bold' to={path.login}>
                   Đăng nhập
                 </Link>
               </div>

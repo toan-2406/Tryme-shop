@@ -21,13 +21,13 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 
 function ProtectedRoute() {
   const { isAuthenticated } = useContext(AppContext)
-  return isAuthenticated ? <Outlet /> : <Navigate to='/login' />
+  return isAuthenticated ? <Outlet /> : <Navigate to={path.login} />
 }
 
 function RejectedRoute() {
   const { isAuthenticated } = useContext(AppContext)
 
-  return !isAuthenticated ? <Outlet /> : <Navigate to='/' />
+  return !isAuthenticated ? <Outlet /> : <Navigate to={path.home} />
 }
 
 export default function useRouteElements() {

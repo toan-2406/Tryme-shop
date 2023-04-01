@@ -21,11 +21,11 @@ export default function Footer() {
             <ul>
               {
                 navLink.map((navLink, index) => {
-                  return <li key={index} className="inline-block ml-3">
-                    <NavLink to={navLink.path} className={({ isActive }) => (isActive ? "font-bold text-red-500" : "font-bold text-gray")} >
-                      {navLink.displayName}
-                    </NavLink>
-                  </li>
+                  return <li key={index} className=' inline-block '>
+                  <NavLink to={navLink.path} className={({ isActive }) => (isActive ? "border-2 text-black px-2 font-russo  " : "font-russo transition-all ease-linear duration-100 text-gray px-3 py-1")} >
+                    {navLink.displayName}
+                  </NavLink>
+                </li>
                 })
               }
             </ul>

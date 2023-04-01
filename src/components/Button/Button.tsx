@@ -1,14 +1,14 @@
 import React, { ButtonHTMLAttributes } from 'react'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading?: boolean
+  isLoading?: boolean,
 }
 
 export default function Button(props: ButtonProps) {
   const { className, isLoading, disabled, children, ...rest } = props
-  const newClassName = disabled ? className + 'cursor-not-allowed' : className
+  const newClassName = disabled ? className + 'cursor-not-allowed opacity-50 hover:bg-transparent' : className
   return (
-    <button className={`bg-transparent rounded-[100px] border border-black py-[10.5px] px-10 hover:bg-orange transition-all ease-linear ${newClassName}`} disabled={disabled} {...rest}>
+    <button aria-label='button' className={`bg-transparent rounded-[100px] border border-black py-[10.5px] px-10 hover:bg-orange transition-all ease-linear ${newClassName}`} disabled={disabled} {...rest}>
       {isLoading && (
         <svg
           aria-hidden='true'

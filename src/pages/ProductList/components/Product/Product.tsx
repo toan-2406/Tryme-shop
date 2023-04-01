@@ -61,11 +61,11 @@ export default function Product({ product }: Props) {
         <div className='text-gray-500 mt-2 flex items-center justify-between gap-1 space-x-1'>
           <div>
             <div className='text-gray-500 text-base font-medium line-through'>
-              {formatCurrency(product.price_before_discount)} đ
+              {formatCurrency(product.price_before_discount)}đ
             </div>
-            <div className='text-lg font-bold sm:text-lg md:text-xl '>{formatCurrency(product.price)} đ</div>
+            <div className='text-lg font-bold sm:text-lg md:text-xl '>{formatCurrency(product.price)}đ</div>
           </div>
-          <Button onClick={addToCart} className='hover:shadow-custom border px-2 py-2 shadow-inner'>
+          <Button onClick={addToCart}  className='hover:shadow-custom border bg-white px-3 py-3 shadow-inner'>
             <svg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <g clipPath='url(#clip0_163_1272)'>
                 <path

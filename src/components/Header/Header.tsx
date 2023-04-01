@@ -66,12 +66,12 @@ export default function Header() {
   const ref = useClickOutside(() => setIsOpen(false));
   return (
     <header
-      className={`fixed top-0 z-50 w-full py-4 text-white transition-all ease-linear ${scrollPosition >= 80 ? 'bg-pink shadow-lg' : ''
+      className={`fixed top-0 z-20 w-full py-4 text-white transition-all ease-linear ${scrollPosition >= 80 ? 'bg-pink shadow-lg' : ''
         }`}
     >
       <div className='container'>
         <div className='flex items-center justify-between gap-2'>
-          <div className='z-20 rounded-md bg-white lg:hidden' onClick={() => setIsOpen(true)}>
+          <div className=' rounded-md bg-white lg:hidden' onClick={() => setIsOpen(true)}>
             <svg width='31' height='31' viewBox='0 0 31 31' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <path
                 d='M4.23895 15.2196H26.739'
@@ -97,13 +97,13 @@ export default function Header() {
             </svg>
           </div>
           <div>
-            <Link to='/'>
-              <img src={logo} alt='logo' />
+            <Link to={path.home} aria-label="Home page Link">
+              <img src={logo} height={62} width={180} alt='logo' />
             </Link>
           </div>
 
           <nav
-            className={`fixed top-0 left-0 z-40 w-1/2 transition-all ease-linear lg:relative lg:translate-x-0  ${isOpen ? 'translate-x-0' : 'translate-x-[-100%]'
+            className={`fixed top-0 left-0 z-50 w-1/2 transition-all ease-linear lg:relative lg:translate-x-0  ${isOpen ? 'translate-x-0' : 'translate-x-[-100%]'
               }`}
             ref={ref}
           >
@@ -111,8 +111,8 @@ export default function Header() {
             <ul className='flex h-screen flex-col items-center justify-center gap-6 bg-white lg:h-auto lg:flex-row lg:bg-transparent'>
               {navLink.map((navLink, index) => {
                 return (
-                  <li key={index} className='ml-3 inline-block'>
-                    <NavLink to={navLink.path} onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? "font-bold text-red-500" : "font-bold text-gray")} >
+                  <li key={index} className=' inline-block '>
+                    <NavLink to={navLink.path} onClick={() => setIsOpen(false)} className={({ isActive }) => (isActive ? "border-2 text-black px-2 font-russo  " : "font-russo transition-all ease-linear duration-100 text-gray px-3 py-1")} >
                       {navLink.displayName}
                     </NavLink>
                   </li>
@@ -265,7 +265,7 @@ export default function Header() {
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className=' block w-full bg-[#e1e0da] py-2 px-3 text-left hover:bg-slate-100 hover:text-orange'
+                      className=' block w-full bg-[#e1e0da] py-2 px-3 text-left font-semibold hover:bg-slate-100 hover:text-orange'
                     >
                       Logout
                     </button>
@@ -283,7 +283,7 @@ export default function Header() {
               </Popover>
             ) : (
               <div>
-                <Link to={path.login}>
+                <Link to={path.login} aria-label="Login account">
                   <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path
                       d='M25 26.25V23.75C25 22.4239 24.4732 21.1521 23.5355 20.2145C22.5979 19.2768 21.3261 18.75 20 18.75H10C8.67392 18.75 7.40215 19.2768 6.46447 20.2145C5.52678 21.1521 5 22.4239 5 23.75V26.25'

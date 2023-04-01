@@ -195,14 +195,14 @@ export default function ProductDetail() {
                 </button>
               </div>
             </div>
-            <div className='col-span-12 md:col-span-7'>
+            <div className='col-span-12 md:col-span-7 mt-4'>
               <h1 className='text-2xl font-bold capitalize md:text-4xl'>{product.name}</h1>
               <div className=' mt-2 flex gap-3'>
                 <div className='text-gray-500 text-2xl font-medium line-through'>
-                  {formatCurrency(product.price_before_discount)} đ
+                  {formatCurrency(product.price_before_discount)}đ
                 </div>
                 <div className='relative inline text-2xl font-bold text-black'>
-                  {formatCurrency(product.price)} đ
+                  {formatCurrency(product.price)}đ
                   <span className='absolute left-3/4 top-[-70%] rounded-md bg-red-600 px-1 whitespace-nowrap  py-1 text-xs font-semibold uppercase text-white'>
                     {rateStale(product.price_before_discount, product.price)} sale
                   </span>

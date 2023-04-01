@@ -37,32 +37,6 @@ export default function Sale() {
   const [realIndex, setRealIndex] = useState<number>(0)
   const swiperRef = useRef<SwiperType>()
   const categoryRef = useRef<HTMLDivElement>(null)
-  const handlePrevClick = (): void => {
-    swiperRef.current?.slidePrev();
-    if (categoryRef.current) {
-      categoryRef.current.classList.replace('opacity-0', 'opacity-100');
-    }
-  }
-  const handleNextClick = () => {
-    swiperRef.current?.slideNext()
-    console.log(categoryRef)
-    if (categoryRef.current) {
-      categoryRef.current.classList.replace('opacity-0', 'opacity-100');
-    }
-  }
-const handleSlideChange = (swiper:any): void => {
-    setRealIndex(swiper.realIndex)
-    console.log("Active",swiper.activeIndex)
-    console.log("Real",swiper.realIndex)
-    if (categoryRef.current) {
-      categoryRef.current.classList.add('translate-x-10');
-    }
-}
-  // useEffect(() => {
-  //   if (categoryRef.current) {
-  //     categoryRef.current.classList.replace('opacity-0', 'opacity-100');
-  //   }
-  // }, [realIndex])
   return (
     <HelmetWrapper title='Sale Page' content='Sale Page of Tryme Shop'>
       <div className='relative bg-pink pt-16 md:max-h-[600px] md:pt-24 lg:h-screen xl:max-h-[900px]'>
@@ -111,7 +85,7 @@ const handleSlideChange = (swiper:any): void => {
               <div className='absolute bottom-0 right-0 grid grid-cols-2 gap-1 md:bottom-5 lg:bottom-20 lg:gap-2'>
                 <Button
                   className='rounded-full px-1 py-1 lg:px-5 lg:py-5'
-                  onClick={handlePrevClick}
+                  onClick={() =>  swiperRef.current?.slidePrev()}
                 >
                   <svg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path
@@ -122,7 +96,7 @@ const handleSlideChange = (swiper:any): void => {
                 </Button>
                 <Button
                   className='rounded-full px-1 py-1 lg:px-5 lg:py-5'
-                  onClick={handleNextClick}
+                  onClick={() =>  swiperRef.current?.slideNext()}
                 >
                   <svg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path
@@ -158,7 +132,7 @@ const handleSlideChange = (swiper:any): void => {
                       delay: 2500,
                       disableOnInteraction: false
                     }}
-                    onSlideChange={(swiper) => handleSlideChange(swiper)}
+                    onSlideChange={(swiper) => setRealIndex(swiper.realIndex)}
                     modules={[Autoplay, Navigation]}
                     className='BannerSlider'
                   >

@@ -68,12 +68,12 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
   const ref = useClickOutside(() => setIsActiveFilter(false));
   return (
     <div
-      className={`fixed top-0 left-0 z-50 h-screen col-span-2 w-3/4 bg-white px-4 lg:relative lg:z-0 lg:w-full lg:translate-x-0 lg:px-0 ${isActiveFilter ? 'translate-x-0' : 'translate-x-[-100%]'
+      className={`fixed top-0 right-0  z-40 h-screen col-span-2 w-3/4 bg-white px-4 lg:relative lg:z-0 lg:w-full lg:translate-x-0 lg:px-0 ${isActiveFilter ? 'translate-x-0' : 'translate-x-[100%]'
         } transition-all duration-150 ease-linear`}
     >
       <div
         onClick={() => setIsActiveFilter(!isActiveFilter)}
-        className='absolute top-[13rem] right-[-50px] z-1 inline-block rounded-md bg-orange py-2 px-2 text-center text-lg font-bold text-white lg:hidden'
+        className='absolute top-[17rem] left-[-50px] z-1 inline-block rounded-md bg-orange py-2 px-2 text-center text-lg font-bold text-white lg:hidden'
       >
         <svg width='31' height='31' viewBox='0 0 31 31' fill='none' xmlns='http://www.w3.org/2000/svg'>
           <path
