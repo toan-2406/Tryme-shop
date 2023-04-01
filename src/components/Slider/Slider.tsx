@@ -27,7 +27,7 @@ const handleSlideChange = (el:SwiperType) =>{
     <div className='relative'>
  
           <Button
-            className='rounded-full px-1 py-1 absolute top-1/2 right-[200%] md:right-[100%] z-30 '
+            className='rounded-full px-1 py-1 absolute top-1/2 right-[100%] z-30 '
             onClick={() => swiperRef.current?.slidePrev()}
             disabled={!allowPrev}
           >
@@ -39,7 +39,7 @@ const handleSlideChange = (el:SwiperType) =>{
             </svg>
           </Button>
           <Button
-            className='rounded-full px-1 py-1 absolute top-1/2 left-[200%] md:left-[100%] z-30 '
+            className='rounded-full px-1 py-1 absolute top-1/2 left-[100%] z-30 '
             onClick={() => swiperRef.current?.slideNext()}
             disabled={!allowNext}
 
