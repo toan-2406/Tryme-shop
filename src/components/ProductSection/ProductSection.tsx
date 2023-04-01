@@ -15,7 +15,7 @@ export default function ProductSection({
   p, children, button, link
 }: Props) {
   return (
-    <section className="pt-10 lg:pt-28 pb-4">
+    <section className="pt-10 lg:pt-20 pb-4">
       <div className="uppercase font-normal text-base ">{p}</div>
       <h2 className="font-russo font-normal text-4xl lg:text-5xl">{title}</h2>
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">

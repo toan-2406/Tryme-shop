@@ -33,7 +33,6 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const position = window.pageYOffset
-      console.log(position)
       setScrollPosition(position)
     }
 
