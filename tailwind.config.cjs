@@ -14,6 +14,11 @@ module.exports = {
         gray:'#252525',
         pink:'#F6E6CD'
       },
+      fontFamily: {
+        'russo': [ 'Russo One','sans-serif'],
+        'frank':['Frank Ruhl Libre', 'serif'],
+        'quicksan':['Quicksand', 'sans-serif']
+      },
     }
   },
   plugins: [

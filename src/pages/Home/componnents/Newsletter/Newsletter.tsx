@@ -4,7 +4,7 @@ import Input from 'src/components/Input'
 const Newsletter = () => {
   return (
     <section className=' lg:max-w-3xl mx-auto pt-10 lg:pt-28 pb-4'>
-      <h2 className='font-russo text-center text-4xl lg:text-5xl '>Stay Up to Date with Our Newsletter</h2>
+      <h2 className='font-russo font-normal text-center text-4xl lg:text-5xl '>Stay Up to Date with Our Newsletter</h2>
       <p className='text-center text-lg font-normal py-3'>
         Sign up for our newsletter to get exclusive offers, new product updates, and special discounts!
       </p>

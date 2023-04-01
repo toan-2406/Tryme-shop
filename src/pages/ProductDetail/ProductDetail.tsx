@@ -269,7 +269,7 @@ export default function ProductDetail() {
 
       <div className='mt-8'>
         <div className='container'>
-          <div className='font-russo text-3xl uppercase'>Simmilar Products</div>
+          <div className='font-russo font-normal text-3xl uppercase'>Simmilar Products</div>
 
           <div>
             <Slider>

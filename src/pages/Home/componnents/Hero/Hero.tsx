@@ -8,12 +8,12 @@ export default function Hero() {
       <div className="container h-full">
         <div className=" h-full grid grid-cols-1 md:grid-cols-2">
           <div className="grid content-center gap-2 md:gap-4">
-            <h1 className="font-russo text-4xl lg:text-6xl">Discover Your Fashionista Side Today</h1>
+            <h1 className="font-russo font-normal text-4xl lg:text-6xl">Discover Your Fashionista Side Today</h1>
             <p className="text-base font-normal">Shop the latest fashion trends at TRYME. From stylish tops to trendy bottoms, find the perfect outfit for any occasion. Stay ahead of the game with our curated collections. Start shopping now!</p>
             <span>
 
               <Link to={path.products} className=' border-4 p-1 inline-block'>
-                <button className='bg-black text-3xl text-pink uppercase  px-2 py-1  font-russo'>
+                <button className='bg-black text-3xl text-pink uppercase  px-2 py-1  font-russo font-normal'>
                   Shop now
                 </button>
               </Link>

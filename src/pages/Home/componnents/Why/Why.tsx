@@ -6,7 +6,7 @@ const Why = () => {
         <img className=" rounded-lg w-full " src="https://images.unsplash.com/photo-1600950207944-0d63e8edbc3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="fashion" />
     </div>
     <div className="grid content-center gap-y-2 lg:gap-y-4">
-        <h2 className="font-russo text-4xl lg:text-5xl">Why Choose Our Ecommerce Store</h2>
+        <h2 className="font-russo font-normal text-4xl lg:text-5xl">Why Choose Our Ecommerce Store</h2>
         <p className="font-normal text-lg tracking-tight">Our e-commerce store offers a unique shopping experience that sets us apart from the competition. Here are just a few reasons why you should choose our store for all your online shopping needs.</p>
         <ul style={{listStyleImage:`url(${icon})`}}  className="list-disc list-inside ">
             <li className='font-normal text-base '>Wide product selection </li>

@@ -47,7 +47,7 @@ export default function DateSelect({ onChange, value, errorMessage }: Props) {
             className='h-10 w-1/3 cursor-pointer rounded-md border  px-3 hover:border-orange'
             value={value?.getDate() || date.date}
           >
-            <option disabled className='font-russo text-[12px]'>Date</option>
+            <option disabled className='font-russo font-normal text-[12px]'>Date</option>
             {range(1, 32).map((item) => (
               <option value={item} key={item}>
                 {item}
@@ -60,7 +60,7 @@ export default function DateSelect({ onChange, value, errorMessage }: Props) {
             className='h-10 w-1/3 cursor-pointer rounded-md border  px-3 hover:border-orange'
             value={value?.getMonth() || date.month}
           >
-            <option disabled className="font-russo text-[12px]">Month</option>
+            <option disabled className="font-russo font-normal text-[12px]">Month</option>
             {range(0, 12).map((item) => (
               <option value={item} key={item}>
                 {item + 1}
@@ -73,7 +73,7 @@ export default function DateSelect({ onChange, value, errorMessage }: Props) {
             className='h-10 w-1/3 cursor-pointer rounded-md border  px-3 hover:border-orange'
             value={value?.getFullYear() || date.year}
           >
-            <option disabled className='font-russo text-[12px]'>Year</option>
+            <option disabled className='font-russo font-normal text-[12px]'>Year</option>
             {range(1990, 2024).map((item) => (
               <option value={item} key={item}>
                 {item}

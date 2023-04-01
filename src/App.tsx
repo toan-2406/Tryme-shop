@@ -22,7 +22,7 @@ function App() {
   return (
     // Thư viện position : floating - ui
     // Thư viện animation : framer motion
-    <div>
+    <div className='font-quicksan font-normal'>
       {routeElements}
       <ToastContainer />
     </div>

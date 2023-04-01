@@ -11,7 +11,7 @@ export default function Contact() {
  <div className='container pt-24 pb-4'>
       <div className='grid grid-cols-1 gap-4 md:grid-cols-12'>
         <div className='md:col-span-6'>
-          <h1 className='font-russo text-4xl'>Contact us</h1>
+          <h1 className='font-russo font-normal text-4xl'>Contact us</h1>
           <p className='text-base font-normal'>
             Please fill out the form below to get in touch with us. We'll get back to you as soon as possible.
           </p>
