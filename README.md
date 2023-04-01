@@ -1,5 +1,5 @@
 # Tryme Shop Website
-[[Website](https://tryme-shop.vercel.app)](https://tryme-shop.vercel.app/)
+Link website: [(https://tryme-shop.vercel.app)](https://tryme-shop.vercel.app/)
 
 This is an e-commerce website that allows users to register, log in, search and filter products, add products to their cart, update their login information, and view their purchase history.
 
