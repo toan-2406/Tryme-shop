@@ -94,3 +94,8 @@ body {
 .swiper-pagination-bullet-active {
   background-color: #f47726;
 }
+@media (max-width: 768px) {
+  .button-slider{
+    display: none;
+  }
+}

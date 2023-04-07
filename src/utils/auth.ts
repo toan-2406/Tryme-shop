@@ -16,7 +16,7 @@ export const getAccessTokenFromLS = () => localStorage.getItem('access_token') |
 
 export const getProfileFromLS = () => {
   const result = localStorage.getItem('profile')
-  return result ? JSON.parse(result) : null
+  return result && JSON.parse(result) 
 }
 
 export const setProfileToLS = (profile: User) => {

@@ -20,7 +20,7 @@ export default function Hero() {
             </span>
           </div>
           <div className=" lg:absolute bottom-0 right-0 lg:w-1/2 lg:h-full  lg:pt-20 pt-2 lg:pl-6">
-            <img loading="lazy" className="object-cover object-bottom rounded-lg max-h-[400px] w-full md:max-h-[550px] h-full lg:max-h-screen xl:max-w-[750px] rounded-tl-[200px]" src="https://images.unsplash.com/photo-1661956602944-249bcd04b63f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="ecommerce" />
+            <img  className="object-cover object-bottom rounded-lg max-h-[400px] w-full md:max-h-[550px] h-full lg:max-h-screen xl:max-w-[750px] rounded-tl-[200px]" src="https://images.unsplash.com/photo-1661956602944-249bcd04b63f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="ecommerce" />
           </div>
         </div>
       </div>

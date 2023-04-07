@@ -41,7 +41,6 @@ const Login = () => {
       onSuccess: (data) => {
         setIsAuthenticated(true)
         setProfileToLS(data.data.data.user)
-        console.log(data.data.data.user)
         navigate('/')
       },
       onError: (error) => {
