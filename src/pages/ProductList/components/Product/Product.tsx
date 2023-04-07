@@ -47,7 +47,7 @@ export default function Product({ product }: Props) {
           Sale {rateStale(product.price_before_discount, product.price)}
         </span>
         <div className='overflow-hidden rounded-[10px] max-h-[280px] h-full'>
-          <img loading="lazy" src={product.image} alt={product.name} className='bg-contain  h-full' />
+          <img src={product.image} alt={product.name} className='bg-contain  h-full' />
         </div>
         <Link to={`/products/${generateNameId({ name: product.name, id: product._id })}`}>
           <div className='mt-4'>
